@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="InputConfig" format=3 uid="uid://cx63joot52vjh"]
+
+[ext_resource type="Script" uid="uid://bdkxb8e03pgpg" path="res://main/config/input_config.gd" id="1_tf2j1"]
+
+[resource]
+script = ExtResource("1_tf2j1")
+game_state = 1
+metadata/_custom_type_script = "uid://bdkxb8e03pgpg"
