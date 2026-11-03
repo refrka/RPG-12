@@ -75,8 +75,6 @@ func request_scene(scene_script: Script) -> void:
 
 	var scene = get_scene(scene_script)
 
-	print("request ", scene)
-
 	if scene:
 
 		change_scene(scene)

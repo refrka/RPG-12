@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dbrhvwktun82n"]
 
 [ext_resource type="Script" uid="uid://c72avixp5qua0" path="res://root.gd" id="1_pq8q7"]
-[ext_resource type="Script" uid="uid://dd7ngmhnx7744" path="res://main/ui/main_menu/main_menu.gd" id="2_pyidc"]
 [ext_resource type="Script" uid="uid://crhwhdgdm5f5v" path="res://main/world.gd" id="2_vvh5c"]
-[ext_resource type="Script" uid="uid://do2hs57m7tw1e" path="res://main/location.gd" id="3_28aoi"]
-[ext_resource type="Script" uid="uid://bgy6enyx1y1yo" path="res://main/ui/profile_overlay.gd" id="5_jnlp7"]
+[ext_resource type="PackedScene" uid="uid://cqysqwgcayld8" path="res://main/locations/forest.tscn" id="3_jnlp7"]
+[ext_resource type="PackedScene" uid="uid://dlh1f17mce2fv" path="res://main/ui/main_menu/main_menu.tscn" id="4_jnlp7"]
+[ext_resource type="PackedScene" uid="uid://cfweavh60lx4f" path="res://main/ui/profile_overlay.tscn" id="5_jnlp7"]
 
 [node name="Root" type="Node" unique_id=863209323]
 script = ExtResource("1_pq8q7")
@@ -37,22 +37,7 @@ color = Color(0.034666672, 0.16, 0, 1)
 [node name="World" type="Node2D" parent="WorldCanvas" unique_id=731348788 groups=["root"]]
 script = ExtResource("2_vvh5c")
 
-[node name="Location" type="Node2D" parent="WorldCanvas/World" unique_id=2142285197 node_paths=PackedStringArray("entities_root", "environment_root") groups=["location", "scene"]]
-script = ExtResource("3_28aoi")
-entities_root = NodePath("YSortRoot/EntitiesRoot")
-environment_root = NodePath("YSortRoot/EnvironmentRoot")
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="WorldCanvas/World/Location" unique_id=1149571950]
-
-[node name="GroundMapLayer" type="TileMapLayer" parent="WorldCanvas/World/Location/NavigationRegion2D" unique_id=931487891]
-
-[node name="SceneMapLayer" type="TileMapLayer" parent="WorldCanvas/World/Location/NavigationRegion2D" unique_id=1202755860]
-
-[node name="YSortRoot" type="Node2D" parent="WorldCanvas/World/Location" unique_id=664316832]
-
-[node name="EntitiesRoot" type="Node2D" parent="WorldCanvas/World/Location/YSortRoot" unique_id=2019877467]
-
-[node name="EnvironmentRoot" type="Node2D" parent="WorldCanvas/World/Location/YSortRoot" unique_id=1767807448]
+[node name="Forest" parent="WorldCanvas/World" unique_id=1590190372 instance=ExtResource("3_jnlp7")]
 
 [node name="MainMenuCanvas" type="CanvasLayer" parent="." unique_id=2133738494]
 
@@ -65,52 +50,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MainMenu" type="MarginContainer" parent="MainMenuCanvas/MainMenuRoot" unique_id=1370571518 node_paths=PackedStringArray("start_button", "reset_button", "quit_button") groups=["main_menu", "scene"]]
+[node name="MainMenu" parent="MainMenuCanvas/MainMenuRoot" unique_id=312179062 instance=ExtResource("4_jnlp7")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("2_pyidc")
-start_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/StartButton")
-reset_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/ResetButton")
-quit_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/QuitButton")
-
-[node name="PanelContainer" type="PanelContainer" parent="MainMenuCanvas/MainMenuRoot/MainMenu" unique_id=1782096199]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-theme_type_variation = &"MainMenuPanel"
-
-[node name="MarginContainer" type="MarginContainer" parent="MainMenuCanvas/MainMenuRoot/MainMenu/PanelContainer" unique_id=884362185]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuCanvas/MainMenuRoot/MainMenu/PanelContainer/MarginContainer" unique_id=697510294]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="StartButton" type="Button" parent="MainMenuCanvas/MainMenuRoot/MainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1044145186]
-custom_minimum_size = Vector2(70, 20)
-layout_mode = 2
-text = "START"
-
-[node name="ResetButton" type="Button" parent="MainMenuCanvas/MainMenuRoot/MainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1843125602]
-custom_minimum_size = Vector2(70, 20)
-layout_mode = 2
-text = "RESET"
-
-[node name="QuitButton" type="Button" parent="MainMenuCanvas/MainMenuRoot/MainMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=634015358]
-custom_minimum_size = Vector2(70, 20)
-layout_mode = 2
-text = "QUIT"
 
 [node name="OverlayCanvas" type="CanvasLayer" parent="." unique_id=570508831]
 
@@ -123,13 +64,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ProfileOverlay" type="MarginContainer" parent="OverlayCanvas/OverlayRoot" unique_id=1155838399 groups=["overlay"]]
+[node name="ProfileOverlay" parent="OverlayCanvas/OverlayRoot" unique_id=691365869 instance=ExtResource("5_jnlp7")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("5_jnlp7")
-pause = true

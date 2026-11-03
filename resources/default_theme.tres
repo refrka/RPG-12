@@ -60,6 +60,16 @@ border_color = Color(0.1949088, 0.4018722, 0.13653463, 1)
 shadow_color = Color(0, 0, 0, 0.050980393)
 shadow_size = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8kods"]
+bg_color = Color(0.08071444, 0.18776774, 0.049752012, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.209025, 0.45, 0.1665, 1)
+shadow_color = Color(0, 0, 0, 0.047058824)
+shadow_size = 10
+
 [resource]
 default_font = ExtResource("1_mwhd1")
 default_font_size = 8
@@ -87,3 +97,5 @@ Button/styles/pressed = SubResource("StyleBoxFlat_uwk1s")
 MainMenuButton/base_type = &"Button"
 MainMenuPanel/base_type = &"PanelContainer"
 MainMenuPanel/styles/panel = SubResource("StyleBoxFlat_28aoi")
+ProfilePanel/base_type = &"PanelContainer"
+ProfilePanel/styles/panel = SubResource("StyleBoxFlat_8kods")

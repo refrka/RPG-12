@@ -1,0 +1,21 @@
+[gd_scene format=4 uid="uid://cqysqwgcayld8"]
+
+[ext_resource type="PackedScene" uid="uid://bt73oc5k0srir" path="res://main/location.tscn" id="1_71863"]
+[ext_resource type="PackedScene" uid="uid://dh2xtlcyeb6fx" path="res://main/entities/props/grass.tscn" id="2_2v1f2"]
+[ext_resource type="PackedScene" uid="uid://d2kxjxdrdx8m3" path="res://main/entities/player.tscn" id="3_jo1hh"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_jo1hh"]
+resource_name = "Props"
+scenes/1/scene = ExtResource("2_2v1f2")
+
+[sub_resource type="TileSet" id="TileSet_a73f3"]
+sources/0 = SubResource("TileSetScenesCollectionSource_jo1hh")
+
+[node name="Forest" unique_id=1590190372 instance=ExtResource("1_71863")]
+
+[node name="SceneMapLayer" parent="NavigationRegion2D" parent_id_path=PackedInt32Array(525507157) index="1" unique_id=889373117]
+tile_map_data = PackedByteArray("AAANAAgAAAAAAAAAAQAKAAkAAAAAAAAAAQAKAAoAAAAAAAAAAQAKAAsAAAAAAAAAAQALAAsAAAAAAAAAAQAMAAsAAAAAAAAAAQANAAsAAAAAAAAAAQAOAAsAAAAAAAAAAQAPAAsAAAAAAAAAAQAQAAsAAAAAAAAAAQARAAsAAAAAAAAAAQASAAoAAAAAAAAAAQASAAkAAAAAAAAAAQATAAkAAAAAAAAAAQATAAgAAAAAAAAAAQASAAgAAAAAAAAAAQASAAcAAAAAAAAAAQARAAcAAAAAAAAAAQAQAAcAAAAAAAAAAQAPAAcAAAAAAAAAAQAOAAcAAAAAAAAAAQANAAkAAAAAAAAAAQAOAAkAAAAAAAAAAQAPAAoAAAAAAAAAAQAOAAwAAAAAAAAAAQANAA0AAAAAAAAAAQAMAA0AAAAAAAAAAQAMAAwAAAAAAAAAAQALAAoAAAAAAAAAAQAMAAoAAAAAAAAAAQANAAoAAAAAAAAAAQAOAAoAAAAAAAAAAQAQAAoAAAAAAAAAAQARAAoAAAAAAAAAAQARAAkAAAAAAAAAAQAQAAkAAAAAAAAAAQAPAAkAAAAAAAAAAQAMAAkAAAAAAAAAAQALAAkAAAAAAAAAAQAQAAgAAAAAAAAAAQARAAgAAAAAAAAAAQAPAAgAAAAAAAAAAQAQAAwAAAAAAAAAAQAPAAwAAAAAAAAAAQAOAA0AAAAAAAAAAQAOAAgAAAAAAAAAAQANAAcAAAAAAAAAAQANAAYAAAAAAAAAAQAOAAYAAAAAAAAAAQARAAYAAAAAAAAAAQARAAUAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_a73f3")
+
+[node name="Player" parent="YSortRoot/CharacterRoot" parent_id_path=PackedInt32Array(1255781624) index="0" unique_id=888931092 instance=ExtResource("3_jo1hh")]
+position = Vector2(365, 119)

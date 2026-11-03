@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bt73oc5k0srir"]
+
+[ext_resource type="Script" uid="uid://do2hs57m7tw1e" path="res://main/location.gd" id="1_wqyeb"]
+
+[node name="Location" type="Node2D" unique_id=1590190372 node_paths=PackedStringArray("character_root", "prop_root", "ground_map_layer", "scene_map_layer") groups=["location", "scene"]]
+script = ExtResource("1_wqyeb")
+character_root = NodePath("YSortRoot/CharacterRoot")
+prop_root = NodePath("YSortRoot/PropRoot")
+ground_map_layer = NodePath("NavigationRegion2D/GroundMapLayer")
+scene_map_layer = NodePath("NavigationRegion2D/SceneMapLayer")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=525507157]
+
+[node name="GroundMapLayer" type="TileMapLayer" parent="NavigationRegion2D" unique_id=982461028]
+
+[node name="SceneMapLayer" type="TileMapLayer" parent="NavigationRegion2D" unique_id=889373117]
+
+[node name="YSortRoot" type="Node2D" parent="." unique_id=462847144]
+y_sort_enabled = true
+
+[node name="CharacterRoot" type="Node2D" parent="YSortRoot" unique_id=1255781624]
+y_sort_enabled = true
+
+[node name="PropRoot" type="Node2D" parent="YSortRoot" unique_id=1593374282]
+y_sort_enabled = true

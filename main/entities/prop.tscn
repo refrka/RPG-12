@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://djcyc2jbhasxv"]
+
+[ext_resource type="Script" uid="uid://d3xx7p1c6wutb" path="res://main/prop.gd" id="1_a73f3"]
+[ext_resource type="PackedScene" uid="uid://ce3j1peoggukj" path="res://main/combat/hurtbox.tscn" id="2_b25hr"]
+
+[node name="Prop" type="StaticBody2D" unique_id=32544631 node_paths=PackedStringArray("component_root", "anim_player")]
+script = ExtResource("1_a73f3")
+component_root = NodePath("ComponentRoot")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=28269093]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1600595524]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1147582641]
+
+[node name="ComponentRoot" type="Node" parent="." unique_id=1860665311]
+
+[node name="Hurtbox" parent="." unique_id=525698482 instance=ExtResource("2_b25hr")]
+
+[editable path="Hurtbox"]

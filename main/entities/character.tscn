@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://c14rk1nnvia6m"]
+
+[ext_resource type="Script" uid="uid://mvgqucem5leb" path="res://main/character.gd" id="1_u7xqv"]
+[ext_resource type="PackedScene" uid="uid://cxh5p8rytjujg" path="res://main/combat/attack_animation_root.tscn" id="2_gosl2"]
+[ext_resource type="AnimationLibrary" uid="uid://bf8rhqu2rvulg" path="res://resources/animations/libraries/sword.res" id="3_yoe28"]
+[ext_resource type="PackedScene" uid="uid://ce3j1peoggukj" path="res://main/combat/hurtbox.tscn" id="4_0k2p7"]
+
+[sub_resource type="Animation" id="Animation_0k2p7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Sprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/Sprite2D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.00048436987),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Hitbox/CollisionShape2D:shape")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Hitbox/CollisionShape2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -11.4102545)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ruoji"]
+_data = {
+&"RESET": SubResource("Animation_0k2p7")
+}
+
+[node name="Character" type="CharacterBody2D" unique_id=888931092 node_paths=PackedStringArray("component_root", "anim_player")]
+script = ExtResource("1_u7xqv")
+component_root = NodePath("ComponentRoot")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=347067646]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=400962027]
+debug_color = Color(0.8601297, 0.8601297, 0.86012965, 0.047058824)
+
+[node name="AttackAnimationRoot" parent="." unique_id=1407580878 instance=ExtResource("2_gosl2")]
+
+[node name="Sprite2D" parent="AttackAnimationRoot/Pivot" parent_id_path=PackedInt32Array(1407580878, 509396653) index="0" unique_id=1442632233]
+visible = false
+
+[node name="CollisionShape2D" parent="AttackAnimationRoot/Pivot/Hitbox" parent_id_path=PackedInt32Array(1407580878, 114113919) index="0" unique_id=478167843]
+position = Vector2(0, -11.4102545)
+
+[node name="AnimationPlayer" parent="AttackAnimationRoot" index="1" unique_id=1701867924]
+libraries/ = SubResource("AnimationLibrary_ruoji")
+libraries/sword = ExtResource("3_yoe28")
+
+[node name="Hurtbox" parent="." unique_id=525698482 instance=ExtResource("4_0k2p7")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=253161205]
+
+[node name="ComponentRoot" type="Node" parent="." unique_id=1375236319]
+
+[editable path="AttackAnimationRoot"]
+[editable path="AttackAnimationRoot/Pivot/Hitbox"]
+[editable path="Hurtbox"]
