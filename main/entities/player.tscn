@@ -16,9 +16,9 @@ height = 12.0
 radius = 6.0
 height = 16.0
 
-[node name="Player" type="CharacterBody2D" unique_id=888931092 node_paths=PackedStringArray("component_root")]
+[node name="Player" type="CharacterBody2D" unique_id=888931092 node_paths=PackedStringArray("component_root") groups=["player"]]
 collision_layer = 8
-collision_mask = 0
+collision_mask = 32
 script = ExtResource("1_cpvfl")
 component_root = NodePath("ComponentRoot")
 
@@ -37,6 +37,8 @@ position = Vector2(0, -5)
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=801045792]
 position = Vector2(0, -5)
+collision_layer = 0
+collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=155890174]
 position = Vector2(8, 0)

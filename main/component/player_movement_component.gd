@@ -3,6 +3,8 @@ class_name PlayerMovementComponent extends MovementComponent
 
 
 
+var input_dir: Vector2
+
 var move_left_pressed:= false
 
 var move_right_pressed:= false
@@ -82,9 +84,15 @@ func get_move_dir() -> Vector2:
 
 		return Vector2.ZERO
 
-	return dir.normalized()
+	input_dir = input_dir.move_toward(dir, 1.5)
+
+	return input_dir
 
 
+
+func get_face_dir() -> Vector2:
+
+	return input_dir.normalized()
 
 
 

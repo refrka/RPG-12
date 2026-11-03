@@ -91,8 +91,11 @@ interact={
 2d_physics/layer_2="Character"
 2d_physics/layer_3="Prop"
 2d_physics/layer_4="Player"
+2d_physics/layer_5="Environment"
+2d_physics/layer_6="Furnishing"
 2d_physics/layer_9="Hitbox"
 2d_physics/layer_10="Hurtbox"
+2d_physics/layer_11="Interactable"
 
 [physics]
 

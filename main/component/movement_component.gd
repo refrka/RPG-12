@@ -26,7 +26,7 @@ var value_mod_tracker:= ValueModTracker.new()
 
 
 
-func set_face_dir(dir: Vector2) -> void:
+func set_face_dir(dir: Vector2 = Vector2.ZERO) -> void:
 
 	if dir != face_dir and dir != Vector2.ZERO:
 
@@ -67,6 +67,11 @@ func get_velocity() -> Vector2:
 	return (get_move_dir() * get_move_speed()) + get_velocity_modifier()
 
 
+func get_face_dir() -> Vector2:
+
+	return entity.velocity.normalized()
+
+
 
 
 
@@ -80,16 +85,24 @@ func _physics_process(delta: float) -> void:
 
 		return
 
+	var current_velocity = entity.velocity
+
 	velocity = get_velocity()
 
 	if movement_enabled:
 
-		entity.velocity = velocity
+		if velocity == Vector2.ZERO:
+
+			entity.velocity = current_velocity.move_toward(Vector2.ZERO, 8.0)
+
+		else:
+
+			entity.velocity = current_velocity.move_toward(velocity, 5.0)
 
 		entity.move_and_slide()
 
 	if rotation_enabled:
 
-		set_face_dir(velocity.normalized())
+		set_face_dir(entity.velocity.normalized())
 
 	value_mod_tracker.tick(delta)

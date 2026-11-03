@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dnaxwnm2e0iv1"]
+
+[ext_resource type="PackedScene" uid="uid://djcyc2jbhasxv" path="res://main/entities/prop.tscn" id="1_gmjd0"]
+[ext_resource type="Texture2D" uid="uid://dme4i3umx3hyd" path="res://resources/textures/props/chest_1.png" id="2_si27c"]
+[ext_resource type="Script" uid="uid://d117n47bdiywm" path="res://main/component/container_component.gd" id="3_5ajby"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blwxf"]
+size = Vector2(14, 5)
+
+[node name="Chest1" unique_id=32544631 instance=ExtResource("1_gmjd0")]
+collision_layer = 1060
+
+[node name="Sprite2D" parent="." index="0" unique_id=28269093]
+texture = ExtResource("2_si27c")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1600595524]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_blwxf")
+
+[node name="ContainerComponent" type="Node" parent="ComponentRoot" parent_id_path=PackedInt32Array(1860665311) index="0" unique_id=1625239922]
+script = ExtResource("3_5ajby")
+
+[editable path="Hurtbox"]

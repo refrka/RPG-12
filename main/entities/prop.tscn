@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ce3j1peoggukj" path="res://main/combat/hurtbox.tscn" id="2_b25hr"]
 
 [node name="Prop" type="StaticBody2D" unique_id=32544631 node_paths=PackedStringArray("component_root", "anim_player")]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_a73f3")
 component_root = NodePath("ComponentRoot")
 anim_player = NodePath("AnimationPlayer")
@@ -11,6 +13,7 @@ anim_player = NodePath("AnimationPlayer")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=28269093]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1600595524]
+debug_color = Color(0.8601297, 0.8601297, 0.86012965, 0.047058824)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1147582641]
 
