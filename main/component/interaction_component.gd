@@ -6,7 +6,7 @@ class_name InteractionComponent extends Component
 
 var interactable_entities: Array[Entity]
 
-
+var in_dialogue:= false
 
 
 
@@ -17,8 +17,6 @@ func initialize(_entity: Entity) -> void:
 	var movement_component = entity.get_component(MovementComponent)
 
 	movement_component.face_dir_changed.connect(_on_face_dir_changed)
-
-	print("connect")
 
 	interaction_area.body_entered.connect(_on_body_entered_interaction_area)
 
@@ -38,11 +36,17 @@ func try_interaction() -> void:
 
 	var interactable_component = get_interactable_component(nearest_interactable)
 
-	if not interactable_component.can_interact():
+	if interactable_component:
 
-		return
+		if not interactable_component.can_interact():
 
-	interactable_component.start_interaction()
+			return
+
+		interactable_component.start_interaction()
+
+	elif nearest_interactable.interact_dialogue_text:
+
+		start_dialogue(nearest_interactable)
 
 
 
@@ -76,6 +80,18 @@ func get_nearest_interactable() -> Entity:
 			nearest_distance = distance
 
 	return nearest_entity
+
+
+
+
+
+func start_dialogue(target_interactable: Entity) -> void:
+
+	in_dialogue = true
+
+	var dialogue_overlay = UI.get_overlay(DialogueOverlay)
+
+	UI.add_overlay(dialogue_overlay)
 		
 
 
@@ -88,8 +104,6 @@ func _on_face_dir_changed(dir: Vector2) -> void:
 
 
 func _on_body_entered_interaction_area(body: PhysicsBody2D) -> void:
-
-	print(body)
 
 	if body is Entity and body.is_interactable():
 
@@ -111,4 +125,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("interact"):
 
-		try_interaction()
+		if not in_dialogue:
+
+			try_interaction()
+
+		else:
+
+			UI.remove_overlay_from_stack(DialogueOverlay)
+
+			in_dialogue = false

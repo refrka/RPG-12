@@ -23,6 +23,8 @@ func _ready() -> void:
 
 		overlay.deactivate()
 
+		overlay.close_requested.connect(_on_overlay_close_requested.bind(overlay))
+
 	fg_color_rect = get_tree().get_first_node_in_group("fg_color_rect")
 
 
@@ -35,9 +37,7 @@ func add_overlay_to_stack(overlay_script: Script) -> void:
 	
 	if overlay:
 
-		overlay_stack.append(overlay)
-
-		overlay.activate()
+		add_overlay(overlay)
 
 
 
@@ -53,9 +53,7 @@ func remove_overlay_from_stack(overlay_script: Script = null) -> void:
 
 		overlay = get_overlay(overlay_script)
 
-	overlay_stack.erase(overlay)
-
-	overlay.deactivate()
+	remove_overlay(overlay)
 
 
 
@@ -78,6 +76,32 @@ func is_in_stack(overlay_script: Script) -> bool:
 
 
 
+func add_overlay(overlay: Overlay) -> void:
+
+	overlay_stack.append(overlay)
+
+	overlay.activate()
+
+
+
+func remove_overlay(overlay: Overlay) -> void:
+
+	overlay_stack.erase(overlay)
+
+	overlay.deactivate()
+
+	
+
+
+
+
+func _on_overlay_close_requested(overlay: Overlay) -> void:
+
+	remove_overlay(overlay)
+
+
+
+
 func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("profile"):
@@ -89,3 +113,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 
 			remove_overlay_from_stack(ProfileOverlay)
+
+
+
+
+		

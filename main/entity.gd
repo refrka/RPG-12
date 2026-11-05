@@ -5,6 +5,8 @@ class_name Entity extends PhysicsBody2D
 
 @export var inventory:= Inventory.new()
 
+@export var interact_dialogue_text: DialogueTextSet
+
 @export var sprite: Sprite2D
 
 @export var component_root: Node
@@ -85,6 +87,10 @@ func is_interactable() -> bool:
 		if component is InteractableComponent:
 
 			return true
+
+	if interact_dialogue_text:
+
+		return true
 
 	return false
 

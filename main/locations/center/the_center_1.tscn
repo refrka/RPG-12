@@ -8,6 +8,9 @@
 [ext_resource type="Script" uid="uid://b5yq3icog3w4w" path="res://main/conditions/is_flag_condition.gd" id="4_c5vwv"]
 [ext_resource type="Script" uid="uid://c24l2p1w0k4fn" path="res://main/commands/run_cutscene_command.gd" id="5_epqrs"]
 [ext_resource type="PackedScene" uid="uid://dnaxwnm2e0iv1" path="res://main/entities/props/containers/chest_1.tscn" id="8_c5vwv"]
+[ext_resource type="PackedScene" uid="uid://ptxwrbu5hw0o" path="res://main/entities/props/furnishings/sign.tscn" id="9_m5dxr"]
+[ext_resource type="Script" uid="uid://bgrsieo3ecpgs" path="res://main/dialogue/dialogue_text_line.gd" id="10_1cq6p"]
+[ext_resource type="Script" uid="uid://ca3cohsm5jues" path="res://main/dialogue/dialogue_text_set.gd" id="11_onksi"]
 
 [sub_resource type="Resource" id="Resource_si27c"]
 script = ExtResource("4_c5vwv")
@@ -33,6 +36,21 @@ physics_layer_0/collision_layer = 2048
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_i5keg")
 
+[sub_resource type="Resource" id="Resource_onksi"]
+script = ExtResource("10_1cq6p")
+text = "yo"
+metadata/_custom_type_script = "uid://bgrsieo3ecpgs"
+
+[sub_resource type="Resource" id="Resource_whafo"]
+script = ExtResource("10_1cq6p")
+text = "what???"
+metadata/_custom_type_script = "uid://bgrsieo3ecpgs"
+
+[sub_resource type="Resource" id="Resource_1cq6p"]
+script = ExtResource("11_onksi")
+lines = Array[ExtResource("10_1cq6p")]([SubResource("Resource_onksi"), SubResource("Resource_whafo")])
+metadata/_custom_type_script = "uid://ca3cohsm5jues"
+
 [node name="TheCenter1" unique_id=1590190372 instance=ExtResource("1_0tjm2")]
 open_commands = Array[ExtResource("2_suu70")]([SubResource("Resource_5ajby")])
 
@@ -45,6 +63,10 @@ position = Vector2(163, 102)
 
 [node name="Chest1" parent="YSortRoot/PropRoot" parent_id_path=PackedInt32Array(1593374282) index="0" unique_id=32544631 instance=ExtResource("8_c5vwv")]
 position = Vector2(214, 123)
+
+[node name="Sign" parent="YSortRoot/PropRoot" parent_id_path=PackedInt32Array(1593374282) index="1" unique_id=1662656191 instance=ExtResource("9_m5dxr")]
+position = Vector2(179, 175)
+interact_dialogue_text = SubResource("Resource_1cq6p")
 
 [node name="FGCanvas" type="CanvasLayer" parent="." index="3" unique_id=1810999415]
 layer = 2

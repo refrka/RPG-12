@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ptxwrbu5hw0o"]
+
+[ext_resource type="PackedScene" uid="uid://djcyc2jbhasxv" path="res://main/entities/prop.tscn" id="1_o7fqp"]
+[ext_resource type="Texture2D" uid="uid://nskbrt23yfrj" path="res://resources/textures/props/sign_texture.png" id="2_wqa5a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xqlh"]
+size = Vector2(10, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqa5a"]
+size = Vector2(10, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qto16"]
+size = Vector2(2, 5)
+
+[node name="Sign" unique_id=32544631 instance=ExtResource("1_o7fqp")]
+collision_layer = 1060
+entity_id = &"sign"
+
+[node name="Sprite2D" parent="." index="0" unique_id=28269093]
+texture = ExtResource("2_wqa5a")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1600595524]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_0xqlh")
+
+[node name="CollisionShape2D" parent="Hurtbox" parent_id_path=PackedInt32Array(525698482) index="0" unique_id=1090572936]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_wqa5a")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" parent_id_path=PackedInt32Array(525698482) index="1" unique_id=2126855701]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_qto16")
+debug_color = Color(0.84, 0.69215995, 0.28559998, 0.050980393)
+
+[editable path="Hurtbox"]

@@ -63,6 +63,7 @@ attack_animation_root = NodePath("../../AttackAnimationRoot")
 weapon = ExtResource("6_cpvfl")
 
 [node name="InteractionComponent" type="Node" parent="ComponentRoot" unique_id=35354171 node_paths=PackedStringArray("interaction_area")]
+process_mode = 3
 script = ExtResource("7_qvsdu")
 interaction_area = NodePath("../../InteractionArea")
 

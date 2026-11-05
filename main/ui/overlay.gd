@@ -1,6 +1,10 @@
 class_name Overlay extends MarginContainer
 
 
+@warning_ignore("unused_signal")
+
+signal close_requested
+
 
 
 @export var pause:= false
@@ -22,8 +26,6 @@ func activate() -> void:
 
 		Game.pause()
 
-	process_mode = PROCESS_MODE_INHERIT
-
 
 
 
@@ -36,5 +38,3 @@ func deactivate() -> void:
 	if pause:
 
 		Game.unpause()
-
-	process_mode = PROCESS_MODE_DISABLED

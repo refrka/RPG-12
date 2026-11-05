@@ -1,8 +1,19 @@
 [gd_scene format=3 uid="uid://dnaxwnm2e0iv1"]
 
 [ext_resource type="PackedScene" uid="uid://djcyc2jbhasxv" path="res://main/entities/prop.tscn" id="1_gmjd0"]
+[ext_resource type="Script" uid="uid://bgrsieo3ecpgs" path="res://main/dialogue/dialogue_text_line.gd" id="2_blwxf"]
 [ext_resource type="Texture2D" uid="uid://dme4i3umx3hyd" path="res://resources/textures/props/chest_1.png" id="2_si27c"]
-[ext_resource type="Script" uid="uid://d117n47bdiywm" path="res://main/component/container_component.gd" id="3_5ajby"]
+[ext_resource type="Script" uid="uid://ca3cohsm5jues" path="res://main/dialogue/dialogue_text_set.gd" id="3_vk6ct"]
+
+[sub_resource type="Resource" id="Resource_7jr7j"]
+script = ExtResource("2_blwxf")
+text = "shit"
+metadata/_custom_type_script = "uid://bgrsieo3ecpgs"
+
+[sub_resource type="Resource" id="Resource_whafo"]
+script = ExtResource("3_vk6ct")
+lines = Array[ExtResource("2_blwxf")]([SubResource("Resource_7jr7j")])
+metadata/_custom_type_script = "uid://ca3cohsm5jues"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blwxf"]
 size = Vector2(14, 5)
@@ -10,6 +21,7 @@ size = Vector2(14, 5)
 [node name="Chest1" unique_id=32544631 instance=ExtResource("1_gmjd0")]
 collision_layer = 1060
 entity_id = &"chest_1"
+interact_dialogue_text = SubResource("Resource_whafo")
 
 [node name="Sprite2D" parent="." index="0" unique_id=28269093]
 texture = ExtResource("2_si27c")
@@ -18,9 +30,5 @@ offset = Vector2(0, -8)
 [node name="CollisionShape2D" parent="." index="1" unique_id=1600595524]
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_blwxf")
-
-[node name="ContainerComponent" type="Node" parent="ComponentRoot" parent_id_path=PackedInt32Array(1860665311) index="0" unique_id=1625239922]
-script = ExtResource("3_5ajby")
-interaction_type = 2
 
 [editable path="Hurtbox"]
