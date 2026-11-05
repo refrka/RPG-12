@@ -159,3 +159,28 @@ func set_game_state(_game_state: GameState) -> void:
 func is_paused() -> bool:
 
 	return get_tree().paused
+
+
+
+
+func get_entity_from_ref(entity_ref: EntityRef) -> Entity:
+
+	var entity: Entity = null
+
+	var location = Scenes.get_scene(Location)
+
+	for _entity in location.character_root.get_children():
+
+		if _entity.entity_id == entity_ref.entity_id:
+
+			entity = _entity
+
+	if entity == null:
+
+		for _entity in location.prop_root.get_children():
+
+			if _entity.entity_id == entity_ref.entity_id:
+
+				entity = _entity
+
+	return entity

@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://pmfvk2h8jhj8" path="res://main/condition.gd" id="2_cbpnm"]
 [ext_resource type="Script" uid="uid://c8h3wiqy7pen5" path="res://main/command_set.gd" id="4_6qlub"]
 [ext_resource type="Script" uid="uid://bd0ygdm8mpdd" path="res://main/commands/detach_camera_from_player_command.gd" id="4_8u1xc"]
+[ext_resource type="Script" uid="uid://ce5olm2c2u6aw" path="res://main/entity_ref.gd" id="4_ywwxq"]
+[ext_resource type="Script" uid="uid://djcrsvl1fo3rw" path="res://main/get_values/global_position_get_value.gd" id="5_5tdba"]
 [ext_resource type="Script" uid="uid://cwmb1oxq73rt0" path="res://main/commands/move_camera_command.gd" id="5_h5kau"]
 [ext_resource type="Script" uid="uid://f4qxrb1olk7h" path="res://main/commands/fade_black_command.gd" id="6_h5kau"]
 [ext_resource type="Script" uid="uid://bwn5fwtd78yd6" path="res://main/commands/attach_camera_to_player_command.gd" id="6_ywwxq"]
@@ -14,9 +16,19 @@
 script = ExtResource("4_8u1xc")
 metadata/_custom_type_script = "uid://bd0ygdm8mpdd"
 
+[sub_resource type="Resource" id="Resource_5tdba"]
+script = ExtResource("4_ywwxq")
+entity_id = &"player"
+
+[sub_resource type="Resource" id="Resource_ywwxq"]
+script = ExtResource("5_5tdba")
+entity_ref = SubResource("Resource_5tdba")
+metadata/_custom_type_script = "uid://djcrsvl1fo3rw"
+
 [sub_resource type="Resource" id="Resource_m5dxr"]
 script = ExtResource("5_h5kau")
 end_position = Vector2(150, 150)
+end_get_value = SubResource("Resource_ywwxq")
 speed = 0.8
 metadata/_custom_type_script = "uid://cwmb1oxq73rt0"
 

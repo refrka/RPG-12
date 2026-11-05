@@ -1,9 +1,13 @@
 class_name MoveCameraCommand extends Command
 
 
+
+
 @export var start_position: Vector2
 
 @export var end_position: Vector2
+
+@export var end_get_value: GetValue
 
 @export var speed:= 0.0
 
@@ -17,6 +21,10 @@ func execute(_data:= {}) -> Result:
 	if super(_data) == Result.FAILURE:
 
 		return result
+
+	if end_get_value:
+
+		end_position = end_get_value.get_value()
 
 	if data.has("start_position"):
 

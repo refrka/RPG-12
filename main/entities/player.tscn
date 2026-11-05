@@ -19,6 +19,7 @@ height = 16.0
 collision_layer = 8
 collision_mask = 2080
 script = ExtResource("1_cpvfl")
+entity_id = &"player"
 component_root = NodePath("ComponentRoot")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=347067646]
