@@ -9,7 +9,7 @@ class_name Location extends Node2D
 
 @export var scene_map_layer: TileMapLayer
 
-
+@export var open_commands: Array[Command]
 
 
 func _ready() -> void:
@@ -32,6 +32,10 @@ func open() -> void:
 		entity.initialize()
 
 		entity.activate()
+
+	for command in open_commands:
+
+		command.execute()
 
 
 

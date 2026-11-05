@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dy8knu7c2d700"]
+
+[ext_resource type="Script" uid="uid://cid0f0avq45v1" path="res://main/entities/props/pickup.gd" id="1_42es2"]
+[ext_resource type="Texture2D" uid="uid://rwjoyu5cpedr" path="res://resources/textures/item_shadow_texture.png" id="2_okg1y"]
+
+[node name="Pickup" type="Area2D" unique_id=2080909720 node_paths=PackedStringArray("sprite", "anim_player")]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("1_42es2")
+sprite = NodePath("ItemSprite")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=145966712]
+texture = ExtResource("2_okg1y")
+
+[node name="ItemSprite" type="Sprite2D" parent="." unique_id=820458649]
+position = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=781082403]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=417256004]

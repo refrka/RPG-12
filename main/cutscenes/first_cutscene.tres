@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Cutscene" format=3 uid="uid://ckrqjo55wcidp"]
+
+[ext_resource type="Script" uid="uid://o0w5y24353vs" path="res://main/command.gd" id="1_3c3cu"]
+[ext_resource type="Script" uid="uid://cs8fxbpamh5e6" path="res://main/cutscene.gd" id="1_ral15"]
+[ext_resource type="Script" uid="uid://pmfvk2h8jhj8" path="res://main/condition.gd" id="2_cbpnm"]
+[ext_resource type="Script" uid="uid://c8h3wiqy7pen5" path="res://main/command_set.gd" id="4_6qlub"]
+[ext_resource type="Script" uid="uid://bd0ygdm8mpdd" path="res://main/commands/detach_camera_from_player_command.gd" id="4_8u1xc"]
+[ext_resource type="Script" uid="uid://cwmb1oxq73rt0" path="res://main/commands/move_camera_command.gd" id="5_h5kau"]
+[ext_resource type="Script" uid="uid://f4qxrb1olk7h" path="res://main/commands/fade_black_command.gd" id="6_h5kau"]
+[ext_resource type="Script" uid="uid://bwn5fwtd78yd6" path="res://main/commands/attach_camera_to_player_command.gd" id="6_ywwxq"]
+[ext_resource type="Script" uid="uid://cjvxljwc4uny5" path="res://main/commands/parallel_command.gd" id="7_ywwxq"]
+
+[sub_resource type="Resource" id="Resource_l8v81"]
+script = ExtResource("4_8u1xc")
+metadata/_custom_type_script = "uid://bd0ygdm8mpdd"
+
+[sub_resource type="Resource" id="Resource_m5dxr"]
+script = ExtResource("5_h5kau")
+end_position = Vector2(150, 150)
+speed = 0.8
+metadata/_custom_type_script = "uid://cwmb1oxq73rt0"
+
+[sub_resource type="Resource" id="Resource_cyr7x"]
+script = ExtResource("6_h5kau")
+fade_values = Vector2(1, 0)
+rate = 0.4
+metadata/_custom_type_script = "uid://f4qxrb1olk7h"
+
+[sub_resource type="Resource" id="Resource_c5vwv"]
+script = ExtResource("7_ywwxq")
+parallel_commands = Array[ExtResource("1_3c3cu")]([SubResource("Resource_m5dxr"), SubResource("Resource_cyr7x")])
+metadata/_custom_type_script = "uid://cjvxljwc4uny5"
+
+[sub_resource type="Resource" id="Resource_bf3um"]
+script = ExtResource("6_ywwxq")
+metadata/_custom_type_script = "uid://bwn5fwtd78yd6"
+
+[sub_resource type="Resource" id="Resource_ral15"]
+script = ExtResource("4_6qlub")
+commands = Array[ExtResource("1_3c3cu")]([SubResource("Resource_l8v81"), SubResource("Resource_c5vwv"), SubResource("Resource_bf3um")])
+metadata/_custom_type_script = "uid://c8h3wiqy7pen5"
+
+[resource]
+script = ExtResource("1_ral15")
+cutscene_id = &"first"
+command_set = SubResource("Resource_ral15")
+metadata/_custom_type_script = "uid://cs8fxbpamh5e6"

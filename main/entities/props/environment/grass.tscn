@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dh2xtlcyeb6fx"]
 
-[ext_resource type="PackedScene" uid="uid://djcyc2jbhasxv" path="res://main/entities/prop.tscn" id="1_ts1qj"]
-[ext_resource type="Texture2D" uid="uid://bqkilqhq0lbec" path="res://resources/textures/props/grass_1_texture.png" id="2_qjnx8"]
-[ext_resource type="Script" uid="uid://b4uve0h0gpcw" path="res://main/component/health_component.gd" id="3_qjnx8"]
+[ext_resource type="PackedScene" uid="uid://djcyc2jbhasxv" path="res://main/entities/prop.tscn" id="1_pgfh4"]
+[ext_resource type="Texture2D" uid="uid://bqkilqhq0lbec" path="res://resources/textures/props/grass_1_texture.png" id="2_3842g"]
+[ext_resource type="Script" uid="uid://b4uve0h0gpcw" path="res://main/component/health_component.gd" id="3_o55yt"]
 
 [sub_resource type="Animation" id="Animation_qjnx8"]
 length = 0.001
@@ -44,15 +44,14 @@ _data = {
 &"die": SubResource("Animation_ts1qj")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ts1qj"]
-radius = 5.0
-height = 16.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v438o"]
+size = Vector2(10, 18)
 
-[node name="Grass" unique_id=32544631 instance=ExtResource("1_ts1qj")]
+[node name="Grass" unique_id=32544631 instance=ExtResource("1_pgfh4")]
 entity_id = &"grass"
 
 [node name="Sprite2D" parent="." index="0" unique_id=28269093]
-texture = ExtResource("2_qjnx8")
+texture = ExtResource("2_3842g")
 offset = Vector2(0, -16)
 hframes = 3
 vframes = 3
@@ -62,11 +61,11 @@ libraries/ = SubResource("AnimationLibrary_l2v3j")
 libraries/grass = SubResource("AnimationLibrary_qjnx8")
 
 [node name="HealthComponent" type="Node" parent="ComponentRoot" parent_id_path=PackedInt32Array(1860665311) index="0" unique_id=2000217174 node_paths=PackedStringArray("hurtbox")]
-script = ExtResource("3_qjnx8")
+script = ExtResource("3_o55yt")
 hurtbox = NodePath("../../Hurtbox")
 
 [node name="CollisionShape2D" parent="Hurtbox" parent_id_path=PackedInt32Array(525698482) index="0" unique_id=1090572936]
-position = Vector2(0, -8)
-shape = SubResource("CapsuleShape2D_ts1qj")
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_v438o")
 
 [editable path="Hurtbox"]

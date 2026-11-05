@@ -30,15 +30,19 @@ func try_interaction() -> void:
 
 	var nearest_interactable = get_nearest_interactable()
 
+	if not nearest_interactable:
+
+		return
+
 	var interactable_component = get_interactable_component(nearest_interactable)
 
 	if not interactable_component.can_interact():
 
 		return
 
-	print("interact")
+	interactable_component.start_interaction()
 
-
+	
 
 
 func get_interactable_component(_entity: Entity) -> Component:

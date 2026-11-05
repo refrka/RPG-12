@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://b0gprp5uqt8n6"]
+
+[ext_resource type="Script" uid="uid://cgk3phpkqmvdx" path="res://main/item.gd" id="1_ktdmh"]
+[ext_resource type="Texture2D" uid="uid://dn163gwisuur6" path="res://resources/textures/items/apple_texture.png" id="1_u4pi4"]
+
+[resource]
+script = ExtResource("1_ktdmh")
+item_id = &"apple"
+item_texture = ExtResource("1_u4pi4")
+item_texture_offset = Vector2(0, -4)
+metadata/_custom_type_script = "uid://cgk3phpkqmvdx"

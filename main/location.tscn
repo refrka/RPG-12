@@ -9,6 +9,30 @@ prop_root = NodePath("YSortRoot/PropRoot")
 ground_map_layer = NodePath("NavigationRegion2D/GroundMapLayer")
 scene_map_layer = NodePath("NavigationRegion2D/SceneMapLayer")
 
+[node name="BGCanvas" type="CanvasLayer" parent="." unique_id=1915497135]
+layer = -1
+
+[node name="BGRoot" type="Control" parent="BGCanvas" unique_id=359904016]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="BGRect" type="ColorRect" parent="BGCanvas/BGRoot" unique_id=86835000]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.08627451, 0.09019608, 0.09019608, 1)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=525507157]
 
 [node name="GroundMapLayer" type="TileMapLayer" parent="NavigationRegion2D" unique_id=982461028]

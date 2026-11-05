@@ -6,6 +6,8 @@ extends Node
 
 func _ready() -> void:
 
+	Game.root = self
+
 	Game.game_state_changed.connect(_on_game_state_changed)
 
 	Game.set_game_state(Game.GameState.MAIN_MENU)

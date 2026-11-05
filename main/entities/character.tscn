@@ -109,8 +109,11 @@ _data = {
 &"RESET": SubResource("Animation_0k2p7")
 }
 
-[node name="Character" type="CharacterBody2D" unique_id=888931092 node_paths=PackedStringArray("component_root", "anim_player")]
+[node name="Character" type="CharacterBody2D" unique_id=888931092 node_paths=PackedStringArray("sprite", "component_root", "anim_player")]
+collision_layer = 3
+collision_mask = 2048
 script = ExtResource("1_u7xqv")
+sprite = NodePath("Sprite2D")
 component_root = NodePath("ComponentRoot")
 anim_player = NodePath("AnimationPlayer")
 

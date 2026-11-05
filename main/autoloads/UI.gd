@@ -8,6 +8,9 @@ var overlay_stack: Array[Overlay]
 var overlay_registry: Dictionary[Script, Overlay]
 
 
+var fg_color_rect: ColorRect
+
+
 
 
 func _ready() -> void:
@@ -19,6 +22,8 @@ func _ready() -> void:
 		overlay_registry[overlay.get_script()] = overlay
 
 		overlay.deactivate()
+
+	fg_color_rect = get_tree().get_first_node_in_group("fg_color_rect")
 
 
 

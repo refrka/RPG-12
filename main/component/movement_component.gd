@@ -97,7 +97,7 @@ func _physics_process(delta: float) -> void:
 
 		else:
 
-			entity.velocity = current_velocity.move_toward(velocity, 5.0)
+			entity.velocity = current_velocity.move_toward(velocity, 15.0)
 
 		entity.move_and_slide()
 

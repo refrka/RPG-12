@@ -2,42 +2,21 @@
 
 [ext_resource type="Script" uid="uid://c72avixp5qua0" path="res://root.gd" id="1_pq8q7"]
 [ext_resource type="Script" uid="uid://crhwhdgdm5f5v" path="res://main/world.gd" id="2_vvh5c"]
-[ext_resource type="PackedScene" uid="uid://cqysqwgcayld8" path="res://main/locations/forest.tscn" id="3_jnlp7"]
+[ext_resource type="PackedScene" uid="uid://1kiymp0riugg" path="res://main/locations/center/the_center_1.tscn" id="3_jnlp7"]
 [ext_resource type="PackedScene" uid="uid://dlh1f17mce2fv" path="res://main/ui/main_menu/main_menu.tscn" id="4_jnlp7"]
 [ext_resource type="PackedScene" uid="uid://cfweavh60lx4f" path="res://main/ui/profile_overlay.tscn" id="5_jnlp7"]
+[ext_resource type="Script" uid="uid://dwtsic5utl2mq" path="res://main/game_camera.gd" id="6_l8v81"]
 
 [node name="Root" type="Node" unique_id=863209323]
 script = ExtResource("1_pq8q7")
 
-[node name="BGCanvas" type="CanvasLayer" parent="." unique_id=1206477168]
-
-[node name="BGRoot" type="Control" parent="BGCanvas" unique_id=1509099006 groups=["root"]]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
-
-[node name="BGColorRect" type="ColorRect" parent="BGCanvas/BGRoot" unique_id=1573866870]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.034666672, 0.16, 0, 1)
-
 [node name="WorldCanvas" type="CanvasLayer" parent="." unique_id=1947102328]
+follow_viewport_enabled = true
 
 [node name="World" type="Node2D" parent="WorldCanvas" unique_id=731348788 groups=["root"]]
 script = ExtResource("2_vvh5c")
 
-[node name="Forest" parent="WorldCanvas/World" unique_id=1590190372 instance=ExtResource("3_jnlp7")]
+[node name="TheCenter1" parent="WorldCanvas/World" unique_id=1590190372 instance=ExtResource("3_jnlp7")]
 
 [node name="MainMenuCanvas" type="CanvasLayer" parent="." unique_id=2133738494]
 
@@ -54,6 +33,7 @@ mouse_filter = 2
 layout_mode = 1
 
 [node name="OverlayCanvas" type="CanvasLayer" parent="." unique_id=570508831]
+visible = false
 
 [node name="OverlayRoot" type="Control" parent="OverlayCanvas" unique_id=957629131]
 layout_mode = 3
@@ -66,3 +46,6 @@ mouse_filter = 2
 
 [node name="ProfileOverlay" parent="OverlayCanvas/OverlayRoot" unique_id=691365869 instance=ExtResource("5_jnlp7")]
 layout_mode = 1
+
+[node name="GameCamera" type="Camera2D" parent="." unique_id=598689656 groups=["game_camera"]]
+script = ExtResource("6_l8v81")

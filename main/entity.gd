@@ -5,6 +5,8 @@ class_name Entity extends PhysicsBody2D
 
 @export var inventory:= Inventory.new()
 
+@export var sprite: Sprite2D
+
 @export var component_root: Node
 
 @export var anim_player: AnimationPlayer

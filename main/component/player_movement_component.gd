@@ -84,7 +84,7 @@ func get_move_dir() -> Vector2:
 
 		return Vector2.ZERO
 
-	input_dir = input_dir.move_toward(dir, 1.5)
+	input_dir = input_dir.move_toward(dir, 1000.0).normalized()
 
 	return input_dir
 
@@ -96,6 +96,9 @@ func get_face_dir() -> Vector2:
 
 
 
+func get_move_speed() -> float:
+
+	return (100.0 + get_speed_modifier()) * get_speed_multiplier()
 
 
 

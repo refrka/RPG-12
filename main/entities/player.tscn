@@ -1,44 +1,48 @@
 [gd_scene format=3 uid="uid://d2kxjxdrdx8m3"]
 
 [ext_resource type="Script" uid="uid://cq3laixs83251" path="res://main/player.gd" id="1_cpvfl"]
-[ext_resource type="Texture2D" uid="uid://bkxo2s4w0gplu" path="res://resources/textures/characters/player_texture.png" id="2_qpsve"]
+[ext_resource type="Texture2D" uid="uid://5um082l2b7w8" path="res://resources/textures/characters/player_sprite_sheet_texture_2.png" id="2_qvsdu"]
 [ext_resource type="PackedScene" uid="uid://cxh5p8rytjujg" path="res://main/combat/attack_animation_root.tscn" id="3_olhwn"]
 [ext_resource type="Script" uid="uid://h7clqkihqkju" path="res://main/component/player_movement_component.gd" id="3_v2iwy"]
 [ext_resource type="Script" uid="uid://dsbxyumewda1t" path="res://main/component/player_combat_component.gd" id="5_olhwn"]
 [ext_resource type="Resource" uid="uid://b2xu4m11uuabu" path="res://main/items/weapons/sword.tres" id="6_cpvfl"]
 [ext_resource type="Script" uid="uid://b6g6rjh7qhbnf" path="res://main/component/interaction_component.gd" id="7_qvsdu"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qvsdu"]
-radius = 3.0
-height = 12.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5keg"]
+size = Vector2(6, 10)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cpvfl"]
-radius = 6.0
+radius = 5.0
 height = 16.0
 
 [node name="Player" type="CharacterBody2D" unique_id=888931092 node_paths=PackedStringArray("component_root") groups=["player"]]
 collision_layer = 8
-collision_mask = 32
+collision_mask = 2080
 script = ExtResource("1_cpvfl")
 component_root = NodePath("ComponentRoot")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=347067646]
-texture = ExtResource("2_qpsve")
+texture = ExtResource("2_qvsdu")
 offset = Vector2(0, -8)
+hframes = 2
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=400962027]
-position = Vector2(0, -3)
+position = Vector2(-2.3841858e-07, -3)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_qvsdu")
+shape = SubResource("RectangleShape2D_i5keg")
 debug_color = Color(0.16, 0.16, 0.16, 0)
 
 [node name="AttackAnimationRoot" parent="." unique_id=1407580878 instance=ExtResource("3_olhwn")]
-position = Vector2(0, -5)
+position = Vector2(0, -7)
+
+[node name="Hitbox" parent="AttackAnimationRoot/Pivot" parent_id_path=PackedInt32Array(1407580878, 509396653) index="1" unique_id=114113919]
+collision_mask = 2560
 
 [node name="InteractionArea" type="Area2D" parent="." unique_id=801045792]
-position = Vector2(0, -5)
+position = Vector2(0, -7)
 collision_layer = 0
-collision_mask = 1024
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=155890174]
 position = Vector2(8, 0)

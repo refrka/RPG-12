@@ -10,6 +10,9 @@ var current_scene: Node
 
 
 
+var cutscene_registry: Dictionary[StringName, Cutscene]
+
+
 
 
 
@@ -29,6 +32,19 @@ func _ready() -> void:
 			if child.is_in_group("scene"):
 
 				register_scene(child)
+
+	var cutscene_dir = "res://main/cutscenes/"
+
+	for dir in ResourceLoader.list_directory(cutscene_dir):
+
+		if dir.ends_with(".tres"):
+
+			var path = cutscene_dir + dir
+
+			var cutscene = load(path) as Cutscene
+
+			cutscene_registry[cutscene.cutscene_id] = cutscene
+
 
 
 
@@ -102,6 +118,14 @@ func set_current_scene(scene: Node) -> void:
 	scene_changed.emit(current_scene)
 
 
+
+
+
+func run_cutscene(cutscene_id: StringName) -> void:
+
+	if cutscene_registry.has(cutscene_id):
+
+		cutscene_registry[cutscene_id].run()
 
 
 

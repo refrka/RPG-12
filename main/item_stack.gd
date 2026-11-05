@@ -3,6 +3,8 @@ class_name ItemStack extends Resource
 
 signal count_changed(new_count: int, amount: int)
 
+signal item_changed(new_item: Item, old_item: Item)
+
 @export var item: Item
 
 @export var count: int
@@ -21,8 +23,27 @@ var stacks_index:= -1
 
 func set_count(_count: int) -> void:
 
+	var amount = count - _count
+
 	count = _count
 
+	count_changed.emit(count, amount)
+
+
+
+func set_item(_item: Item) -> void:
+
+	item = _item
+
+	item_changed.emit(item)
+
+
+
+func clear() -> void:
+
+	set_count(0)
+
+	set_item(null)
 
 
 
@@ -65,17 +86,17 @@ func merge(stack: ItemStack) -> void:
 
 func add_amount(amount: int) -> void:
 
-	count = min(item.max_stack, count + amount)
+	var new_count = min(item.max_stack, count + amount)
 
-	count_changed.emit(count, amount)
+	set_count(new_count)
 
 
 
 func remove_amount(amount: int) -> void:
 
-	count = max(0, count - amount)
+	var new_count = max(0, count - amount)
 
-	count_changed.emit(count, -amount)
+	set_count(new_count)
 
 
 
@@ -88,7 +109,7 @@ func is_empty() -> bool:
 
 
 
-func new_stack(_item: Item, _count: int) -> ItemStack:
+static func new_stack(_item: Item, _count: int) -> ItemStack:
 
 	var stack:= ItemStack.new()
 

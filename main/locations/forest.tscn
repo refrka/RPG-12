@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dh2xtlcyeb6fx" path="res://main/entities/props/environment/grass.tscn" id="2_2v1f2"]
 [ext_resource type="PackedScene" uid="uid://d2kxjxdrdx8m3" path="res://main/entities/player.tscn" id="3_jo1hh"]
 [ext_resource type="PackedScene" uid="uid://dnaxwnm2e0iv1" path="res://main/entities/props/containers/chest_1.tscn" id="4_30elj"]
+[ext_resource type="PackedScene" uid="uid://7lmomtbgkk8k" path="res://main/entities/props/furnishings/red_green_switch.tscn" id="5_y3ij6"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_jo1hh"]
 resource_name = "Props"
@@ -23,3 +24,8 @@ position = Vector2(365, 119)
 
 [node name="Chest1" parent="YSortRoot/PropRoot" parent_id_path=PackedInt32Array(1593374282) index="0" unique_id=32544631 instance=ExtResource("4_30elj")]
 position = Vector2(348, 153)
+collision_layer = 1
+collision_mask = 1
+
+[node name="RedGreenSwitch" parent="YSortRoot/PropRoot" parent_id_path=PackedInt32Array(1593374282) index="1" unique_id=25273246 instance=ExtResource("5_y3ij6")]
+position = Vector2(415, 125)
