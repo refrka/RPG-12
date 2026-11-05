@@ -14,7 +14,7 @@ pause = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=509999861]
 layout_mode = 2
-color = Color(0.017162021, 0.067004845, 0.00953925, 0.8666667)
+color = Color(0.07, 0.07, 0.07, 0.8666667)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=505518456]
 layout_mode = 2

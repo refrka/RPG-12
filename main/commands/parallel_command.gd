@@ -37,8 +37,6 @@ func check_results() -> void:
 
 	if completed_commands.size() == parallel_commands.size():
 
-		print("done!")
-
 		result = Result.SUCCESS
 
 		command_executed.emit()

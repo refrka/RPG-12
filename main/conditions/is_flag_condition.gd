@@ -19,10 +19,4 @@ func evaluate(_data:= {}) -> bool:
 
 		value = data.value
 
-	print(Globals.flags)
-
-	print(key)
-
-	print(value)
-
 	return Globals.get_flag(key, false) == value

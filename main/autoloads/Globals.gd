@@ -13,8 +13,6 @@ func clear_flags() -> void:
 
 	flags.clear()
 
-	print("cleared flags")
-
 
 
 

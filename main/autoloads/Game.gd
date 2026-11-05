@@ -184,3 +184,19 @@ func get_entity_from_ref(entity_ref: EntityRef) -> Entity:
 				entity = _entity
 
 	return entity
+
+
+
+
+
+
+func enable_player() -> void:
+
+	player.activate()
+
+
+
+
+func disable_player() -> void:
+
+	player.deactivate()

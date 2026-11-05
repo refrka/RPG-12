@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d2kxjxdrdx8m3" path="res://main/entities/player.tscn" id="3_i5keg"]
 [ext_resource type="Script" uid="uid://b5yq3icog3w4w" path="res://main/conditions/is_flag_condition.gd" id="4_c5vwv"]
 [ext_resource type="Script" uid="uid://c24l2p1w0k4fn" path="res://main/commands/run_cutscene_command.gd" id="5_epqrs"]
+[ext_resource type="PackedScene" uid="uid://dnaxwnm2e0iv1" path="res://main/entities/props/containers/chest_1.tscn" id="8_c5vwv"]
 
 [sub_resource type="Resource" id="Resource_si27c"]
 script = ExtResource("4_c5vwv")
@@ -40,7 +41,10 @@ tile_map_data = PackedByteArray("AAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAA
 tile_set = SubResource("TileSet_mwhd1")
 
 [node name="Player" parent="YSortRoot/CharacterRoot" parent_id_path=PackedInt32Array(1255781624) index="0" unique_id=888931092 instance=ExtResource("3_i5keg")]
-position = Vector2(97, 124)
+position = Vector2(163, 102)
+
+[node name="Chest1" parent="YSortRoot/PropRoot" parent_id_path=PackedInt32Array(1593374282) index="0" unique_id=32544631 instance=ExtResource("8_c5vwv")]
+position = Vector2(214, 123)
 
 [node name="FGCanvas" type="CanvasLayer" parent="." index="3" unique_id=1810999415]
 layer = 2

@@ -1,6 +1,6 @@
 class_name CommandSet extends Resource
 
-
+signal all_commands_executed
 
 @export var commands: Array[Command]
 
@@ -34,6 +34,10 @@ func execute_command(index: int, data:= {}) -> void:
 
 				execute_command(command_index, command.data)
 
+			else:
+
+				all_commands_executed.emit()
+
 
 
 
@@ -45,3 +49,7 @@ func _on_command_executed(command: Command) -> void:
 	if command_index <= commands.size() - 1:
 
 		execute_command(command_index, command.data)
+
+	else:
+
+		all_commands_executed.emit()

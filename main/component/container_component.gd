@@ -14,5 +14,11 @@ func can_interact() -> bool:
 
 
 
+func start_interaction() -> void:
+
+	pass
+
+
+
 
 

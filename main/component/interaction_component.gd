@@ -18,6 +18,8 @@ func initialize(_entity: Entity) -> void:
 
 	movement_component.face_dir_changed.connect(_on_face_dir_changed)
 
+	print("connect")
+
 	interaction_area.body_entered.connect(_on_body_entered_interaction_area)
 
 	interaction_area.body_exited.connect(_on_body_exited_interaction_area)
@@ -42,7 +44,7 @@ func try_interaction() -> void:
 
 	interactable_component.start_interaction()
 
-	
+
 
 
 func get_interactable_component(_entity: Entity) -> Component:
@@ -86,6 +88,8 @@ func _on_face_dir_changed(dir: Vector2) -> void:
 
 
 func _on_body_entered_interaction_area(body: PhysicsBody2D) -> void:
+
+	print(body)
 
 	if body is Entity and body.is_interactable():
 

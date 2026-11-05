@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dlh1f17mce2fv" path="res://main/ui/main_menu/main_menu.tscn" id="4_jnlp7"]
 [ext_resource type="PackedScene" uid="uid://cfweavh60lx4f" path="res://main/ui/profile_overlay.tscn" id="5_jnlp7"]
 [ext_resource type="Script" uid="uid://dwtsic5utl2mq" path="res://main/game_camera.gd" id="6_l8v81"]
+[ext_resource type="PackedScene" uid="uid://d4dp4lmh6j2fb" path="res://main/ui/dialogue_overlay.tscn" id="6_vyht1"]
 
 [node name="Root" type="Node" unique_id=863209323]
 script = ExtResource("1_pq8q7")
@@ -33,7 +34,6 @@ mouse_filter = 2
 layout_mode = 1
 
 [node name="OverlayCanvas" type="CanvasLayer" parent="." unique_id=570508831]
-visible = false
 
 [node name="OverlayRoot" type="Control" parent="OverlayCanvas" unique_id=957629131]
 layout_mode = 3
@@ -45,6 +45,10 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ProfileOverlay" parent="OverlayCanvas/OverlayRoot" unique_id=691365869 instance=ExtResource("5_jnlp7")]
+visible = false
+layout_mode = 1
+
+[node name="DialogueOverlay" parent="OverlayCanvas/OverlayRoot" unique_id=1892897258 instance=ExtResource("6_vyht1")]
 layout_mode = 1
 
 [node name="GameCamera" type="Camera2D" parent="." unique_id=598689656 groups=["game_camera"]]
