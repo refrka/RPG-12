@@ -6,6 +6,8 @@ signal all_commands_executed
 
 var command_index:= 0
 
+var active_command: Command
+
 
 func execute_all(data:= {}) -> void:
 
@@ -18,13 +20,13 @@ func execute_all(data:= {}) -> void:
 
 func execute_command(index: int, data:= {}) -> void:
 
-	var command = commands[index]
+	active_command = commands[index]
 
-	match command.execute(data):
+	match active_command.execute(data):
 
 		Command.Result.PENDING:
 
-			command.command_executed.connect(_on_command_executed.bind(command), CONNECT_ONE_SHOT)
+			active_command.command_executed.connect(_on_command_executed.bind(active_command), CONNECT_ONE_SHOT)
 
 		Command.Result.SUCCESS:
 
@@ -32,7 +34,7 @@ func execute_command(index: int, data:= {}) -> void:
 
 			if command_index <= commands.size() - 1:
 
-				execute_command(command_index, command.data)
+				execute_command(command_index, active_command.data)
 
 			else:
 
@@ -41,8 +43,17 @@ func execute_command(index: int, data:= {}) -> void:
 
 
 
+func is_executing() -> bool:
+
+	return active_command != null
+
+
+
+
 
 func _on_command_executed(command: Command) -> void:
+
+	active_command = null
 
 	command_index += 1
 

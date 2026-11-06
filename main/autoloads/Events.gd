@@ -22,7 +22,7 @@ func subscribe(event_script: Script, callback: Callable) -> void:
 
 
 
-func fire(event_script: Script, data:= {}) -> void:
+func fire_script(event_script: Script, data:= {}) -> void:
 
 	var event = event_script.new()
 
@@ -39,3 +39,13 @@ func fire(event_script: Script, data:= {}) -> void:
 		
 
 
+
+
+
+func fire_event(event: Event) -> void:
+
+	var script = event.get_script()
+
+	var data = event.data
+
+	fire_script(script, data)

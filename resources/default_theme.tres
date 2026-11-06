@@ -50,6 +50,33 @@ bg_color = Color(0.17376274, 0.17879674, 0.17879662, 1)
 border_width_bottom = 1
 border_color = Color(0.54901963, 0.54901963, 0.54901963, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w72j2"]
+content_margin_left = 3.0
+bg_color = Color(0.26583362, 0.26583368, 0.26583353, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.40270662, 0.40270656, 0.4027067, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aajxx"]
+content_margin_left = 3.0
+bg_color = Color(0.15354908, 0.15354922, 0.15354913, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.20148283, 0.20148286, 0.2014828, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdiyg"]
+content_margin_left = 3.0
+bg_color = Color(0.17353752, 0.17353752, 0.17353746, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.17353752, 0.17353752, 0.17353746, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7mbl"]
 bg_color = Color(0.11716048, 0.11716049, 0.11716042, 1)
 border_width_left = 1
@@ -102,6 +129,10 @@ Button/styles/focus = SubResource("StyleBoxFlat_og51b")
 Button/styles/hover = SubResource("StyleBoxFlat_nva1m")
 Button/styles/normal = SubResource("StyleBoxFlat_mwhd1")
 Button/styles/pressed = SubResource("StyleBoxFlat_uwk1s")
+DialogueButton/base_type = &"Button"
+DialogueButton/styles/hover = SubResource("StyleBoxFlat_w72j2")
+DialogueButton/styles/normal = SubResource("StyleBoxFlat_aajxx")
+DialogueButton/styles/pressed = SubResource("StyleBoxFlat_wdiyg")
 DialoguePanel/base_type = &"PanelContainer"
 DialoguePanel/styles/panel = SubResource("StyleBoxFlat_w7mbl")
 MainMenuButton/base_type = &"Button"

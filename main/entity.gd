@@ -3,15 +3,23 @@ class_name Entity extends PhysicsBody2D
 
 @export var entity_id: StringName
 
-@export var inventory:= Inventory.new()
+@export var display_name: String
 
-@export var interact_dialogue_text: DialogueTextSet
+@export var inventory:= Inventory.new()
 
 @export var sprite: Sprite2D
 
 @export var component_root: Node
 
 @export var anim_player: AnimationPlayer
+
+@export var dialogue_library: DialogueLibrary
+
+
+
+@export var icon_texture: Texture2D
+
+@export var speaker_texture: Texture2D
 
 
 var component_registry: Dictionary[Script, Component]
@@ -88,7 +96,7 @@ func is_interactable() -> bool:
 
 			return true
 
-	if interact_dialogue_text:
+	if dialogue_library:
 
 		return true
 

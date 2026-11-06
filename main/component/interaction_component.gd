@@ -44,7 +44,7 @@ func try_interaction() -> void:
 
 		interactable_component.start_interaction()
 
-	elif nearest_interactable.interact_dialogue_text:
+	elif nearest_interactable.dialogue_library:
 
 		start_dialogue(nearest_interactable)
 
@@ -89,9 +89,7 @@ func start_dialogue(target_interactable: Entity) -> void:
 
 	in_dialogue = true
 
-	var dialogue_overlay = UI.get_overlay(DialogueOverlay)
-
-	UI.add_overlay(dialogue_overlay)
+	Dialogue.start_dialogue(target_interactable)
 		
 
 

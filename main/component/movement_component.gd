@@ -93,11 +93,11 @@ func _physics_process(delta: float) -> void:
 
 		if velocity == Vector2.ZERO:
 
-			entity.velocity = current_velocity.move_toward(Vector2.ZERO, 8.0)
+			entity.velocity = current_velocity.move_toward(Vector2.ZERO, 15.0)
 
 		else:
 
-			entity.velocity = current_velocity.move_toward(velocity, 15.0)
+			entity.velocity = current_velocity.move_toward(velocity, 11.0)
 
 		entity.move_and_slide()
 

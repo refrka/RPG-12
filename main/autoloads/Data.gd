@@ -70,4 +70,4 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		Game.save()
 
-		Events.fire(DebugEvent)
+		Events.fire_script(DebugEvent)

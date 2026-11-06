@@ -21,7 +21,14 @@ func run() -> void:
 
 
 
+func end() -> void:
+
+	Scenes.end_cutscene()
+
+
+
 
 func _on_all_commands_executed() -> void:
 
-	Game.enable_player()
+	end()
+

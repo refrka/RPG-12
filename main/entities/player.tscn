@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d2kxjxdrdx8m3"]
 
 [ext_resource type="Script" uid="uid://cq3laixs83251" path="res://main/player.gd" id="1_cpvfl"]
+[ext_resource type="Texture2D" uid="uid://cb7cyun1p83q8" path="res://resources/textures/characters/player_speaker_texture.png" id="2_nlgl6"]
 [ext_resource type="Texture2D" uid="uid://5um082l2b7w8" path="res://resources/textures/characters/player_sprite_sheet_texture_2.png" id="2_qvsdu"]
 [ext_resource type="PackedScene" uid="uid://cxh5p8rytjujg" path="res://main/combat/attack_animation_root.tscn" id="3_olhwn"]
 [ext_resource type="Script" uid="uid://h7clqkihqkju" path="res://main/component/player_movement_component.gd" id="3_v2iwy"]
@@ -15,12 +16,14 @@ size = Vector2(6, 10)
 radius = 5.0
 height = 16.0
 
-[node name="Player" type="CharacterBody2D" unique_id=888931092 node_paths=PackedStringArray("component_root") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=888931092 node_paths=PackedStringArray("sprite", "component_root") groups=["player"]]
 collision_layer = 8
 collision_mask = 2080
 script = ExtResource("1_cpvfl")
 entity_id = &"player"
+sprite = NodePath("Sprite2D")
 component_root = NodePath("ComponentRoot")
+speaker_texture = ExtResource("2_nlgl6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=347067646]
 texture = ExtResource("2_qvsdu")

@@ -12,7 +12,7 @@ var current_scene: Node
 
 var cutscene_registry: Dictionary[StringName, Cutscene]
 
-
+var current_cutscene: Cutscene
 
 
 
@@ -121,17 +121,40 @@ func set_current_scene(scene: Node) -> void:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 func run_cutscene(cutscene_id: StringName) -> void:
 
 	if cutscene_registry.has(cutscene_id):
 
-		cutscene_registry[cutscene_id].run()
+		current_cutscene = cutscene_registry[cutscene_id]
+
+		current_cutscene.run()
+
+	Inputs.enable_action("end_cutscene")
+
+	Inputs.disable_action("back")
 
 
 
 
+func end_cutscene() -> void:
 
+	current_cutscene = null
 
+	Inputs.disable_action("end_cutscene")
+
+	Inputs.enable_action("back")
 
 
 
@@ -146,3 +169,16 @@ func _on_child_entered_root(child: Node) -> void:
 	if child.is_in_group("scene"):
 
 		register_scene(child)
+
+
+
+
+
+
+
+
+func _unhandled_input(event: InputEvent) -> void:
+
+	if event.is_action_pressed("end_cutscene"):
+
+		current_cutscene.end()
