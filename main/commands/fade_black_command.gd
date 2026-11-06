@@ -32,6 +32,17 @@ func execute(_data:= {}) -> Result:
 
 
 
+func cancel() -> void:
+
+	super()
+
+	node_script.queue_free()
+
+	UI.fg_color_rect.color.a = fade_values.y
+
+
+
+
 func fade() -> void:
 
 	node_script = NodeScript.new_process(update_alpha)

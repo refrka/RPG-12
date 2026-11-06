@@ -26,7 +26,7 @@ func _ready() -> void:
 
 			var _input_config = load(dir + dir_name) as InputConfig
 
-			input_config_registry[_input_config.game_state] = _input_config
+			input_config_registry[_input_config.game_state] = _input_config.duplicate()
 
 	Game.game_state_changed.connect(_on_game_state_changed)
 
@@ -36,12 +36,6 @@ func _ready() -> void:
 func is_action_allowed(action: StringName) -> bool:
 
 	if not input_config or not input_config.allowed_actions.has(action):
-
-		if not enabled_actions.has(action):
-
-			return false
-
-	if disabled_actions.has(action):
 
 		return false
 
@@ -53,25 +47,17 @@ func is_action_allowed(action: StringName) -> bool:
 func enable_action(action: StringName) -> void:
 
 	if not input_config.allowed_actions.has(action):
-
-		enabled_actions.append(action)
-
-	if disabled_actions.has(action):
-
-		disabled_actions.erase(action)
+		
+		input_config.allowed_actions.append(action)
 
 
 
 
 func disable_action(action: StringName) -> void:
 
-	if not disabled_actions.has(action):
+	if input_config.allowed_actions.has(action):
 
-		disabled_actions.append(action)
-
-	if enabled_actions.has(action):
-
-		enabled_actions.erase(action)
+		input_config.allowed_actions.erase(action)
 
 
 			
@@ -98,7 +84,7 @@ func _input(event: InputEvent) -> void:
 
 		for _event in action_events:
 
-			if _event.physical_keycode == event.physical_keycode:
+			if _event is InputEventKey and _event.physical_keycode == event.physical_keycode:
 
 				if is_action_allowed(action):
 

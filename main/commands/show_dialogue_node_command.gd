@@ -14,7 +14,7 @@ func execute(_data:= {}) -> Result:
 
 		return result
 
-	Dialogue.dialogue_ended.connect(_on_dialogue_ended)
+	Dialogue.dialogue_ended.connect(_on_dialogue_ended, CONNECT_ONE_SHOT)
 
 	var entity = Game.get_entity_from_ref(speaker_entity_ref)
 
@@ -26,6 +26,14 @@ func execute(_data:= {}) -> Result:
 
 
 
+
+func cancel() -> void:
+
+	super()
+
+	Dialogue.dialogue_ended.disconnect(_on_dialogue_ended)
+
+	Dialogue.end_dialogue()
 
 
 

@@ -114,6 +114,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 			remove_overlay_from_stack(ProfileOverlay)
 
+	if event.is_action_pressed("back"):
+
+		if not overlay_stack.is_empty():
+
+			var top_overlay = overlay_stack.back()
+
+			remove_overlay(top_overlay)
+
 
 
 

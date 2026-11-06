@@ -12,7 +12,7 @@ signal dialogue_closed
 
 @export var end_dialogue_button: Button
 
-@export var next_button: Button
+@export var more_text_label: Label
 
 
 

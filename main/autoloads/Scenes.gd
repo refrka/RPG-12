@@ -150,11 +150,15 @@ func run_cutscene(cutscene_id: StringName) -> void:
 
 func end_cutscene() -> void:
 
+	current_cutscene.end()
+
 	current_cutscene = null
 
 	Inputs.disable_action("end_cutscene")
 
 	Inputs.enable_action("back")
+
+	Game.enable_player()
 
 
 
@@ -181,4 +185,4 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("end_cutscene"):
 
-		current_cutscene.end()
+		end_cutscene()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqte4y3bunox1" path="res://main/ui/dialogue_overlay.gd" id="1_whafo"]
 
-[node name="DialogueOverlay" type="MarginContainer" unique_id=1892897258 node_paths=PackedStringArray("dialogue_speaker_label", "dialogue_text_label", "speaker_texture_rect", "end_dialogue_button") groups=["overlay"]]
+[node name="DialogueOverlay" type="MarginContainer" unique_id=1892897258 node_paths=PackedStringArray("dialogue_speaker_label", "dialogue_text_label", "speaker_texture_rect", "end_dialogue_button", "more_text_label") groups=["overlay"]]
 process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +18,7 @@ dialogue_speaker_label = NodePath("PanelContainer/MarginContainer/HBoxContainer/
 dialogue_text_label = NodePath("PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/RichTextLabel")
 speaker_texture_rect = NodePath("PanelContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/SpeakerTexture")
 end_dialogue_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/MarginContainer2/EndDialogueButton")
+more_text_label = NodePath("PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/MarginContainer2/MoreTextLabel")
 pause = true
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=250932946]
@@ -97,7 +98,6 @@ alignment = 0
 layout_mode = 2
 
 [node name="MoreTextLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/MarginContainer2" unique_id=583023629]
-visible = false
 layout_mode = 2
 text = "[ . . . ]"
 

@@ -36,6 +36,11 @@ func _ready() -> void:
 
 	dialogue_overlay.dialogue_closed.connect(_on_dialogue_closed)
 
+	dialogue_overlay.more_text_label.hide()
+
+	dialogue_overlay.end_dialogue_button.hide()
+
+
 
 
 func start_dialogue(source_entity: Entity) -> void:
@@ -49,6 +54,20 @@ func start_dialogue(source_entity: Entity) -> void:
 	set_current_dialogue_node(greeting)
 
 	set_current_text_index(0)
+
+	Inputs.enable_action("continue_dialogue_text")
+
+
+
+
+
+func end_dialogue() -> void:
+
+	Inputs.disable_action("continue_dialogue_text")
+
+	UI.remove_overlay(dialogue_overlay)
+
+	dialogue_ended.emit()
 
 
 
@@ -66,6 +85,7 @@ func show_dialogue_node(source_entity: Entity, dialogue_node: DialogueNode) -> v
 
 
 
+
 func set_current_dialogue_source(entity: Entity) -> void:
 
 	current_dialogue_source = entity
@@ -73,6 +93,7 @@ func set_current_dialogue_source(entity: Entity) -> void:
 	dialogue_overlay.set_speaker_name(entity.display_name)
 
 	dialogue_overlay.set_speaker_texture(entity.speaker_texture)
+
 
 
 
@@ -89,14 +110,28 @@ func set_current_text_index(index: int) -> void:
 
 	var text = get_dialogue_text(index)
 
-	dialogue_overlay.set_dialogue_text(text)
+	if text != "":
+
+		dialogue_overlay.set_dialogue_text(text)
+
+		if index == current_dialogue_node.dialogue_text.text.size() - 1:
+
+			dialogue_overlay.more_text_label.hide()
+
+			dialogue_overlay.end_dialogue_button.show()
+
+		else:
+
+			dialogue_overlay.more_text_label.show()
+
+			dialogue_overlay.end_dialogue_button.hide()
 
 
 
 
 func get_dialogue_text(index: int) -> String:
 
-	if current_dialogue_node and current_dialogue_node.dialogue_text.text.size() - 1 <= index:
+	if current_dialogue_node and current_dialogue_node.dialogue_text.text.size() - 1 >= index:
 
 		return current_dialogue_node.dialogue_text.text[index]
 	
@@ -135,4 +170,15 @@ func get_greeting() -> DialogueGreeting:
 
 func _on_dialogue_closed() -> void:
 
-	dialogue_ended.emit()
+	end_dialogue()
+
+
+
+
+
+
+func _unhandled_input(event: InputEvent) -> void:
+
+	if event.is_action_pressed("continue_dialogue_text"):
+
+		set_current_text_index(current_text_index + 1)

@@ -23,7 +23,9 @@ func run() -> void:
 
 func end() -> void:
 
-	Scenes.end_cutscene()
+	if command_set.is_executing():
+
+		command_set.active_command.cancel()
 
 
 

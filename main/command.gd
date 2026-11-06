@@ -48,6 +48,14 @@ func execute(_data:= {}) -> Result:
 
 
 
+
+func cancel() -> void:
+
+	result = Result.CANCELLED
+
+
+
+
 static func run(_data:= {}) -> Result:
 
 	return Result.SUCCESS

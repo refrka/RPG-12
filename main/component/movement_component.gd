@@ -10,6 +10,8 @@ var velocity: Vector2
 
 var face_dir: Vector2
 
+var move_dir: Vector2
+
 
 var movement_enabled:= true
 
@@ -64,7 +66,7 @@ func get_velocity_modifier() -> Vector2:
 
 func get_velocity() -> Vector2:
 
-	return (get_move_dir() * get_move_speed()) + get_velocity_modifier()
+	return (move_dir * get_move_speed()) + get_velocity_modifier()
 
 
 func get_face_dir() -> Vector2:
@@ -87,6 +89,8 @@ func _physics_process(delta: float) -> void:
 
 	var current_velocity = entity.velocity
 
+	move_dir = get_move_dir()
+
 	velocity = get_velocity()
 
 	if movement_enabled:
@@ -103,6 +107,6 @@ func _physics_process(delta: float) -> void:
 
 	if rotation_enabled:
 
-		set_face_dir(entity.velocity.normalized())
+		set_face_dir(move_dir.normalized())
 
 	value_mod_tracker.tick(delta)

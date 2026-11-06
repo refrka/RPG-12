@@ -14,10 +14,6 @@ func _ready() -> void:
 
 	process_mode = PROCESS_MODE_ALWAYS
 
-	var save_dict = read_dict_from_file()
-
-	Game.save_data = SaveData.from_dict(save_dict)
-
 
 
 
