@@ -16,6 +16,28 @@ enum GameState {
 
 }
 
+var player: Player:
+
+	get:
+
+		if not player:
+
+			player = get_tree().get_first_node_in_group("player")
+
+		return player
+
+var camera: GameCamera:
+
+	get:
+
+		if not camera:
+
+			camera = get_tree().get_first_node_in_group("game_camera")
+
+		return camera
+
+var root: Node
+
 var game_state: GameState
 
 var save_data: SaveData
@@ -71,6 +93,12 @@ func reset() -> void:
 
 	save_data = null
 
+	Globals.clear_flags()
+
+	var new_save_data = SaveData.new()
+
+	Data.write_dict_to_file(new_save_data.to_dict())
+
 	load_save_data()
 
 
@@ -101,15 +129,17 @@ func unpause() -> void:
 
 func load_save_data() -> void:
 
-	if not save_data:
+	var save_dict = Data.read_dict_from_file()
+
+	if save_dict.is_empty():
 
 		Data.create_new_save_file()
 
-		var save_dict = Data.read_dict_from_file()
+		save_dict = Data.read_dict_from_file()
 
-		save_data = SaveData.from_dict(save_dict)
+	save_data = SaveData.from_dict(save_dict)
 
-		last_save_dict = save_dict
+	last_save_dict = save_dict
 
 
 
@@ -129,3 +159,44 @@ func set_game_state(_game_state: GameState) -> void:
 func is_paused() -> bool:
 
 	return get_tree().paused
+
+
+
+
+func get_entity_from_ref(entity_ref: EntityRef) -> Entity:
+
+	var entity: Entity = null
+
+	var location = Scenes.get_scene(Location)
+
+	for _entity in location.character_root.get_children():
+
+		if _entity.entity_id == entity_ref.entity_id:
+
+			entity = _entity
+
+	if entity == null:
+
+		for _entity in location.prop_root.get_children():
+
+			if _entity.entity_id == entity_ref.entity_id:
+
+				entity = _entity
+
+	return entity
+
+
+
+
+
+
+func enable_player() -> void:
+
+	player.activate()
+
+
+
+
+func disable_player() -> void:
+
+	player.deactivate()

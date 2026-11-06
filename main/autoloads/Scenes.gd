@@ -10,6 +10,9 @@ var current_scene: Node
 
 
 
+var cutscene_registry: Dictionary[StringName, Cutscene]
+
+var current_cutscene: Cutscene
 
 
 
@@ -29,6 +32,19 @@ func _ready() -> void:
 			if child.is_in_group("scene"):
 
 				register_scene(child)
+
+	var cutscene_dir = "res://main/cutscenes/"
+
+	for dir in ResourceLoader.list_directory(cutscene_dir):
+
+		if dir.ends_with(".tres"):
+
+			var path = cutscene_dir + dir
+
+			var cutscene = load(path) as Cutscene
+
+			cutscene_registry[cutscene.cutscene_id] = cutscene
+
 
 
 
@@ -75,8 +91,6 @@ func request_scene(scene_script: Script) -> void:
 
 	var scene = get_scene(scene_script)
 
-	print("request ", scene)
-
 	if scene:
 
 		change_scene(scene)
@@ -119,8 +133,52 @@ func set_current_scene(scene: Node) -> void:
 
 
 
+func run_cutscene(cutscene_id: StringName) -> void:
+
+	if cutscene_registry.has(cutscene_id):
+
+		current_cutscene = cutscene_registry[cutscene_id]
+
+		current_cutscene.run()
+
+	Inputs.enable_action("end_cutscene")
+
+	Inputs.disable_action("back")
+
+
+
+
+func end_cutscene() -> void:
+
+	current_cutscene = null
+
+	Inputs.disable_action("end_cutscene")
+
+	Inputs.enable_action("back")
+
+
+
+
+
+
+
+
+
 func _on_child_entered_root(child: Node) -> void:
 
 	if child.is_in_group("scene"):
 
 		register_scene(child)
+
+
+
+
+
+
+
+
+func _unhandled_input(event: InputEvent) -> void:
+
+	if event.is_action_pressed("end_cutscene"):
+
+		current_cutscene.end()

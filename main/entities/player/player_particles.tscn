@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://5lrg3f5brsrf"]
+
+[sub_resource type="Curve" id="Curve_ppmyq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9973142, 0.22449005), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_emgx6"]
+curve = SubResource("Curve_ppmyq")
+
+[sub_resource type="Gradient" id="Gradient_e60q7"]
+offsets = PackedFloat32Array(0, 0.6187192, 1)
+colors = PackedColorArray(0.19349456, 0.19349453, 0.1934945, 1, 1, 1, 1, 1, 0.4027066, 0.40270662, 0.4027064, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5vcub"]
+gradient = SubResource("Gradient_e60q7")
+
+[sub_resource type="Curve" id="Curve_ikb5x"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.9897971), 0.0, 0.0, 0, 0, Vector2(0.9973142, 0.020409584), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bg5s2"]
+curve = SubResource("Curve_ikb5x")
+
+[sub_resource type="Curve" id="Curve_8at3t"]
+_data = [Vector2(0, 0.17346966), 0.0, 0.0, 0, 0, Vector2(0.34825426, 0.82397985), 0.0, 0.0, 0, 0, Vector2(0.992838, 0.4413268), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_im32h"]
+curve = SubResource("Curve_8at3t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aajxx"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 2.0
+angle_min = -179.99998
+angle_max = 180.00002
+velocity_pivot = Vector3(0, 1, 0)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5000001
+orbit_velocity_curve = SubResource("CurveTexture_bg5s2")
+radial_velocity_min = -1.0000223
+radial_velocity_max = 7.9999776
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 4.9999976
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = 9.999997
+scale_curve = SubResource("CurveTexture_im32h")
+scale_over_velocity_max = 50.0
+color = Color(0.82, 0.82, 0.82, 1)
+color_ramp = SubResource("GradientTexture1D_5vcub")
+alpha_curve = SubResource("CurveTexture_emgx6")
+
+[node name="Node2D" type="Node2D" unique_id=214143178]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1432765514]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_aajxx")

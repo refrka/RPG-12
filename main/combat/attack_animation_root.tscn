@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cxh5p8rytjujg"]
+
+[ext_resource type="Script" uid="uid://crwr1wmvt6u1w" path="res://main/combat/attack_animation_root.gd" id="1_3gkor"]
+[ext_resource type="PackedScene" uid="uid://c6f6yr0uueras" path="res://main/combat/hitbox.tscn" id="2_3vxuv"]
+
+[node name="AttackAnimationRoot" type="Node2D" unique_id=1407580878 node_paths=PackedStringArray("anim_player", "pivot", "hitbox")]
+script = ExtResource("1_3gkor")
+anim_player = NodePath("AnimationPlayer")
+pivot = NodePath("Pivot")
+hitbox = NodePath("Pivot/Hitbox")
+
+[node name="Pivot" type="Node2D" parent="." unique_id=509396653]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot" unique_id=1442632233]
+
+[node name="Hitbox" parent="Pivot" unique_id=114113919 instance=ExtResource("2_3vxuv")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1701867924]
+
+[editable path="Pivot/Hitbox"]

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://7lmomtbgkk8k"]
+
+[ext_resource type="PackedScene" uid="uid://djcyc2jbhasxv" path="res://main/entities/prop.tscn" id="1_d7goq"]
+[ext_resource type="Texture2D" uid="uid://4cph3pqup2dl" path="res://resources/textures/props/red_green_switch_texture.png" id="2_67gy4"]
+[ext_resource type="Script" uid="uid://dgvixoav8wgap" path="res://main/component/switch_component.gd" id="3_67gy4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6cgc"]
+size = Vector2(8, 4)
+
+[node name="RedGreenSwitch" unique_id=32544631 instance=ExtResource("1_d7goq")]
+collision_layer = 1060
+entity_id = &"red_green_switch"
+
+[node name="Sprite2D" parent="." index="0" unique_id=28269093]
+texture = ExtResource("2_67gy4")
+offset = Vector2(0, -8)
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1600595524]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_e6cgc")
+
+[node name="SwitchComponent" type="Node" parent="ComponentRoot" parent_id_path=PackedInt32Array(1860665311) index="0" unique_id=116765197]
+script = ExtResource("3_67gy4")
+
+[editable path="Hurtbox"]

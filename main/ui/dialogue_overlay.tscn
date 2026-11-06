@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://d4dp4lmh6j2fb"]
+
+[ext_resource type="Script" uid="uid://dqte4y3bunox1" path="res://main/ui/dialogue_overlay.gd" id="1_whafo"]
+
+[node name="DialogueOverlay" type="MarginContainer" unique_id=1892897258 node_paths=PackedStringArray("dialogue_speaker_label", "dialogue_text_label", "speaker_texture_rect", "end_dialogue_button") groups=["overlay"]]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_whafo")
+dialogue_speaker_label = NodePath("PanelContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/Label")
+dialogue_text_label = NodePath("PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/RichTextLabel")
+speaker_texture_rect = NodePath("PanelContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/SpeakerTexture")
+end_dialogue_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/MarginContainer2/EndDialogueButton")
+pause = true
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=250932946]
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"DialoguePanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1311040952]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1202595788]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1686596764]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=1559512143]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=1935852352]
+layout_mode = 2
+text = "Speaker"
+
+[node name="SpeakerTexture" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer" unique_id=837262468]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=586921120]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1551233222]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2" unique_id=1124920437]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=886496006]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/MarginContainer" unique_id=691920670]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=259319101]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1875594488]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OptionList" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/MarginContainer" unique_id=416766507]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/MarginContainer/OptionList" unique_id=1872690301]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_type_variation = &"DialogueButton"
+text = "This is a text option"
+alignment = 0
+
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/MarginContainer/OptionList" unique_id=482910429]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+theme_type_variation = &"DialogueButton"
+text = "And another one"
+alignment = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1381034288]
+layout_mode = 2
+
+[node name="MoreTextLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/MarginContainer2" unique_id=583023629]
+visible = false
+layout_mode = 2
+text = "[ . . . ]"
+
+[node name="EndDialogueButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/MarginContainer2/VBoxContainer/HBoxContainer/MarginContainer2" unique_id=1587454200]
+custom_minimum_size = Vector2(65, 15)
+layout_mode = 2
+theme_type_variation = &"DialogueButton"
+text = "End Dialogue"

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bt73oc5k0srir"]
+
+[ext_resource type="Script" uid="uid://do2hs57m7tw1e" path="res://main/location.gd" id="1_wqyeb"]
+
+[node name="Location" type="Node2D" unique_id=1590190372 node_paths=PackedStringArray("character_root", "prop_root", "ground_map_layer", "scene_map_layer") groups=["location", "scene"]]
+script = ExtResource("1_wqyeb")
+character_root = NodePath("YSortRoot/CharacterRoot")
+prop_root = NodePath("YSortRoot/PropRoot")
+ground_map_layer = NodePath("NavigationRegion2D/GroundMapLayer")
+scene_map_layer = NodePath("NavigationRegion2D/SceneMapLayer")
+
+[node name="BGCanvas" type="CanvasLayer" parent="." unique_id=1915497135]
+layer = -1
+
+[node name="BGRoot" type="Control" parent="BGCanvas" unique_id=359904016]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="BGRect" type="ColorRect" parent="BGCanvas/BGRoot" unique_id=86835000]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.08627451, 0.09019608, 0.09019608, 1)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=525507157]
+
+[node name="GroundMapLayer" type="TileMapLayer" parent="NavigationRegion2D" unique_id=982461028]
+
+[node name="SceneMapLayer" type="TileMapLayer" parent="NavigationRegion2D" unique_id=889373117]
+
+[node name="YSortRoot" type="Node2D" parent="." unique_id=462847144]
+y_sort_enabled = true
+
+[node name="CharacterRoot" type="Node2D" parent="YSortRoot" unique_id=1255781624]
+y_sort_enabled = true
+
+[node name="PropRoot" type="Node2D" parent="YSortRoot" unique_id=1593374282]
+y_sort_enabled = true

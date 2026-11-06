@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="Cutscene" format=3 uid="uid://ckrqjo55wcidp"]
+
+[ext_resource type="Script" uid="uid://o0w5y24353vs" path="res://main/command.gd" id="1_3c3cu"]
+[ext_resource type="Script" uid="uid://cs8fxbpamh5e6" path="res://main/cutscene.gd" id="1_ral15"]
+[ext_resource type="Script" uid="uid://pmfvk2h8jhj8" path="res://main/condition.gd" id="2_cbpnm"]
+[ext_resource type="Script" uid="uid://c8h3wiqy7pen5" path="res://main/command_set.gd" id="4_6qlub"]
+[ext_resource type="Script" uid="uid://f4qxrb1olk7h" path="res://main/commands/fade_black_command.gd" id="4_ywwxq"]
+[ext_resource type="Script" uid="uid://syhfkc5tbcl1" path="res://main/dialogue/dialogue_text.gd" id="5_5tdba"]
+[ext_resource type="Script" uid="uid://b54j2nqn742fc" path="res://main/events/cutscene_trigger_event.gd" id="6_gbhja"]
+[ext_resource type="Script" uid="uid://bwn5fwtd78yd6" path="res://main/commands/attach_camera_to_player_command.gd" id="6_ywwxq"]
+[ext_resource type="Script" uid="uid://cac7mn2oosxjd" path="res://main/commands/fire_event_command.gd" id="7_pai1m"]
+[ext_resource type="Script" uid="uid://u0kqmasl4xoa" path="res://main/dialogue/dialogue_node.gd" id="9_e0u01"]
+[ext_resource type="Script" uid="uid://d3mwngfadpubv" path="res://main/commands/show_dialogue_node_command.gd" id="10_u3a33"]
+[ext_resource type="Script" uid="uid://ce5olm2c2u6aw" path="res://main/entity_ref.gd" id="11_5tdba"]
+
+[sub_resource type="Resource" id="Resource_lhgu8"]
+script = ExtResource("6_ywwxq")
+metadata/_custom_type_script = "uid://bwn5fwtd78yd6"
+
+[sub_resource type="Resource" id="Resource_t7373"]
+script = ExtResource("4_ywwxq")
+fade_values = Vector2(1, 0)
+rate = 0.5
+metadata/_custom_type_script = "uid://f4qxrb1olk7h"
+
+[sub_resource type="Resource" id="Resource_rf7n6"]
+script = ExtResource("5_5tdba")
+text = Array[String](["Text from dlog"])
+metadata/_custom_type_script = "uid://syhfkc5tbcl1"
+
+[sub_resource type="Resource" id="Resource_yi4p4"]
+script = ExtResource("6_gbhja")
+
+[sub_resource type="Resource" id="Resource_7ttm1"]
+script = ExtResource("7_pai1m")
+event = SubResource("Resource_yi4p4")
+metadata/_custom_type_script = "uid://cac7mn2oosxjd"
+
+[sub_resource type="Resource" id="Resource_chgng"]
+script = ExtResource("4_6qlub")
+commands = Array[ExtResource("1_3c3cu")]([SubResource("Resource_7ttm1")])
+metadata/_custom_type_script = "uid://c8h3wiqy7pen5"
+
+[sub_resource type="Resource" id="Resource_jsmap"]
+script = ExtResource("9_e0u01")
+dialogue_text = SubResource("Resource_rf7n6")
+exit_command_set = SubResource("Resource_chgng")
+metadata/_custom_type_script = "uid://u0kqmasl4xoa"
+
+[sub_resource type="Resource" id="Resource_h7lfk"]
+script = ExtResource("11_5tdba")
+entity_id = &"player"
+metadata/_custom_type_script = "uid://ce5olm2c2u6aw"
+
+[sub_resource type="Resource" id="Resource_ljb8j"]
+script = ExtResource("10_u3a33")
+speaker_entity_ref = SubResource("Resource_h7lfk")
+dialogue_node = SubResource("Resource_jsmap")
+metadata/_custom_type_script = "uid://d3mwngfadpubv"
+
+[sub_resource type="Resource" id="Resource_ral15"]
+script = ExtResource("4_6qlub")
+commands = Array[ExtResource("1_3c3cu")]([SubResource("Resource_lhgu8"), SubResource("Resource_t7373"), SubResource("Resource_ljb8j")])
+metadata/_custom_type_script = "uid://c8h3wiqy7pen5"
+
+[resource]
+script = ExtResource("1_ral15")
+cutscene_id = &"first"
+command_set = SubResource("Resource_ral15")
+metadata/_custom_type_script = "uid://cs8fxbpamh5e6"

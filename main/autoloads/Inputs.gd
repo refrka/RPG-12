@@ -7,6 +7,11 @@ var input_config: InputConfig
 var input_config_registry: Dictionary[Game.GameState, InputConfig]
 
 
+var enabled_actions: Array[StringName]
+
+var disabled_actions: Array[StringName]
+
+
 
 
 func _ready() -> void:
@@ -32,9 +37,42 @@ func is_action_allowed(action: StringName) -> bool:
 
 	if not input_config or not input_config.allowed_actions.has(action):
 
+		if not enabled_actions.has(action):
+
+			return false
+
+	if disabled_actions.has(action):
+
 		return false
 
 	return true
+
+
+
+
+func enable_action(action: StringName) -> void:
+
+	if not input_config.allowed_actions.has(action):
+
+		enabled_actions.append(action)
+
+	if disabled_actions.has(action):
+
+		disabled_actions.erase(action)
+
+
+
+
+func disable_action(action: StringName) -> void:
+
+	if not disabled_actions.has(action):
+
+		disabled_actions.append(action)
+
+	if enabled_actions.has(action):
+
+		enabled_actions.erase(action)
+
 
 			
 
@@ -54,7 +92,7 @@ func _input(event: InputEvent) -> void:
 
 		return
 
-	for action in input_config.allowed_actions:
+	for action in input_config.allowed_actions + enabled_actions:
 
 		var action_events = InputMap.action_get_events(action)
 
@@ -62,7 +100,9 @@ func _input(event: InputEvent) -> void:
 
 			if _event.physical_keycode == event.physical_keycode:
 
-				return
+				if is_action_allowed(action):
+
+					return
 
 	get_viewport().set_input_as_handled()
 

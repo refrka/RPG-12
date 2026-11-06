@@ -61,3 +61,13 @@ func read_dict_from_file() -> Dictionary:
 
 	return json.data
 
+
+
+
+func _unhandled_input(event: InputEvent) -> void:
+
+	if event.is_action_pressed("quicksave"):
+
+		Game.save()
+
+		Events.fire_script(DebugEvent)

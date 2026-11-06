@@ -17,6 +17,8 @@ var game_data:= {
 
 
 
+
+
 func to_dict() -> Dictionary:
 
 	return {
@@ -24,6 +26,8 @@ func to_dict() -> Dictionary:
 		"player_data": player_data,
 
 		"game_data": game_data,
+
+		"flags": Globals.flags
 
 	}
 
@@ -36,5 +40,7 @@ static func from_dict(dict: Dictionary) -> SaveData:
 	save_data.game_data = dict.game_data
 
 	save_data.player_data = dict.player_data
+
+	Globals.flags = dict.flags
 
 	return save_data

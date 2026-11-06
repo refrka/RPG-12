@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c6f6yr0uueras"]
+
+[ext_resource type="Script" uid="uid://c13a17k5xt23b" path="res://main/combat/hitbox.gd" id="1_acx00"]
+
+[node name="Hitbox" type="Area2D" unique_id=114113919]
+collision_layer = 256
+collision_mask = 512
+script = ExtResource("1_acx00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=478167843]
+debug_color = Color(0.9, 0.37109998, 0.12599999, 0.03529412)

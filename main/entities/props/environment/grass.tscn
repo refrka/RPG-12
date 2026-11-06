@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dh2xtlcyeb6fx"]
+
+[ext_resource type="PackedScene" uid="uid://djcyc2jbhasxv" path="res://main/entities/prop.tscn" id="1_pgfh4"]
+[ext_resource type="Texture2D" uid="uid://bqkilqhq0lbec" path="res://resources/textures/props/grass_1_texture.png" id="2_3842g"]
+[ext_resource type="Script" uid="uid://b4uve0h0gpcw" path="res://main/component/health_component.gd" id="3_o55yt"]
+
+[sub_resource type="Animation" id="Animation_qjnx8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l2v3j"]
+_data = {
+&"RESET": SubResource("Animation_qjnx8")
+}
+
+[sub_resource type="Animation" id="Animation_ts1qj"]
+length = 0.68396115
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0005126515, 0.032008894, 0.10064675, 0.17449914, 0.27640733, 0.37740335, 0.60000575),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjnx8"]
+_data = {
+&"die": SubResource("Animation_ts1qj")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v438o"]
+size = Vector2(10, 18)
+
+[node name="Grass" unique_id=32544631 instance=ExtResource("1_pgfh4")]
+entity_id = &"grass"
+
+[node name="Sprite2D" parent="." index="0" unique_id=28269093]
+texture = ExtResource("2_3842g")
+offset = Vector2(0, -16)
+hframes = 3
+vframes = 3
+
+[node name="AnimationPlayer" parent="." index="2" unique_id=1147582641]
+libraries/ = SubResource("AnimationLibrary_l2v3j")
+libraries/grass = SubResource("AnimationLibrary_qjnx8")
+
+[node name="HealthComponent" type="Node" parent="ComponentRoot" parent_id_path=PackedInt32Array(1860665311) index="0" unique_id=2000217174 node_paths=PackedStringArray("hurtbox")]
+script = ExtResource("3_o55yt")
+hurtbox = NodePath("../../Hurtbox")
+
+[node name="CollisionShape2D" parent="Hurtbox" parent_id_path=PackedInt32Array(525698482) index="0" unique_id=1090572936]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_v438o")
+
+[editable path="Hurtbox"]
