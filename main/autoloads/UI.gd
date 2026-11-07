@@ -78,6 +78,10 @@ func is_in_stack(overlay_script: Script) -> bool:
 
 func add_overlay(overlay: Overlay) -> void:
 
+	if overlay_stack.has(overlay):
+
+		return
+
 	overlay_stack.append(overlay)
 
 	overlay.activate()
@@ -85,6 +89,10 @@ func add_overlay(overlay: Overlay) -> void:
 
 
 func remove_overlay(overlay: Overlay) -> void:
+
+	if not overlay_stack.has(overlay):
+
+		return
 
 	overlay_stack.erase(overlay)
 

@@ -14,6 +14,10 @@ func initialize(_entity: Entity) -> void:
 
 	super(_entity)
 
+	Dialogue.dialogue_started.connect(_on_dialogue_started)
+
+	Dialogue.dialogue_ended.connect(_on_dialogue_ended)
+
 	var movement_component = entity.get_component(MovementComponent)
 
 	movement_component.face_dir_changed.connect(_on_face_dir_changed)
@@ -118,6 +122,18 @@ func _on_body_exited_interaction_area(body: PhysicsBody2D) -> void:
 
 
 
+func _on_dialogue_started() -> void:
+
+	in_dialogue = true
+
+
+
+func _on_dialogue_ended() -> void:
+
+	in_dialogue = false
+
+
+
 
 func _unhandled_input(event: InputEvent) -> void:
 
@@ -130,5 +146,3 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 
 			UI.remove_overlay_from_stack(DialogueOverlay)
-
-			in_dialogue = false

@@ -183,6 +183,6 @@ func _on_child_entered_root(child: Node) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 
-	if event.is_action_pressed("end_cutscene"):
+	if event.is_action_pressed("end_cutscene") and Inputs.is_action_allowed("end_cutscene"):
 
 		end_cutscene()

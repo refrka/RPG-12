@@ -57,6 +57,8 @@ func start_dialogue(source_entity: Entity) -> void:
 
 	Inputs.enable_action("continue_dialogue_text")
 
+	dialogue_started.emit()
+
 
 
 

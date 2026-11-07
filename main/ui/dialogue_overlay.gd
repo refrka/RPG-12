@@ -45,10 +45,16 @@ func set_dialogue_text(text: String) -> void:
 
 
 
+func deactivate() -> void:
+
+	super()
+
+	dialogue_closed.emit()
+
+
+
 
 
 func _on_end_dialogue_pressed() -> void:
 
 	close_requested.emit()
-
-	dialogue_closed.emit()
